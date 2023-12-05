@@ -1,3 +1,5 @@
 Images Test
 
-![Test Image](/Users/security/Desktop/Payne%20Taylor%20Headshot.jpg)
+![test image](/docs/assets/images/cmdncontrol%20logo.png)
+
+
