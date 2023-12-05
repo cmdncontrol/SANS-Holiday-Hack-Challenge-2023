@@ -1,5 +1,5 @@
 Images Test
 
-![test image](/docs/assets/images/cmdncontrol%20logo.png)
+![test image](docs/assets/images/cmdncontrol%20logo.jpg)
 
 
