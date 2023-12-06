@@ -134,4 +134,61 @@ Task 21: Your final task is to stop the 14516_troll process to collect the remai
 
 Answer: *kill 12771*
 
+---
+
+Objective 4: Reportinator
+
+
+
+---
+
+Objective 5: Azure 101
+
+Task 1: You may not know this but the Azure cli help messages are very easy to access. First, try typing:
+$ az help | less
+
+Answer: *az help | less*
+
+Task 2: Next, you've already been configured with credentials. Use 'az' and your 'account' to 'show' your current details and make sure to pipe to less ( | less )
+
+Answer: *az account show | less*
+
+![]()
+
+Task 3: Excellent! Now get a list of resource groups in Azure.
+For more information:
+https://learn.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest
+
+Answer: *az group list*
+
+![](/docs/assets/images/azgroup.png)
+
+Task 4: Ok, now use one of the resource groups to get a list of function apps. For more information:
+https://learn.microsoft.com/en-us/cli/azure/functionapp?view=azure-cli-latest
+Note: Some of the information returned from this command relates to other cloud assets used by Santa and his elves.
+
+Answer: *az functionapp list -g "northpole-rg1"*
+
+You could've also used northpole-rg2 here. This also revealed an interesting URL: https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl
+
+![](/docs/assets/images/azfunctionapp.png)
+
+Task 5: Find a way to list the only VM in one of the resource groups you have access to.
+For more information:
+https://learn.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest
+
+Answer: *az vm list -g "northpole-rg2"*
+
+![](/docs/assets/images/azvms.png)
+
+Task 6: Find a way to invoke a run-command against the only Virtual Machine (VM) so you can RunShellScript and get a directory listing to reveal a file on the Azure VM.
+For more information:
+https://learn.microsoft.com/en-us/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke
+
+Answer: az vm run-command invoke -g northpole-rg2 -n NP-VM1 --command-id RunShellScript --scripts "ls"
+
+![](/docs/assets/images/azls.png)
+
+---
+
 
