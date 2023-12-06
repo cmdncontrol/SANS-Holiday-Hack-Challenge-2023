@@ -2,7 +2,7 @@
 
 ---
 
-Objective 1: Holiday Hack Orientation
+Objective: Holiday Hack Orientation
 
 To start you need to maneuver your boat and dock at Christmas Island: Oritentation
 
@@ -18,7 +18,7 @@ This is just to get your feet wet, simply enter *answer* to complete the challen
 
 ---
 
-Objective 2: Snowball Fight
+Objective: Snowball Fight
 
 You could play with another player to fight Santa and win, but that defeats the whole purpose of hacking...
 
@@ -42,7 +42,7 @@ However... why stop there?! You can also use the console once the game is starte
 
 ---
 
-Objective 3: Linux 101
+Objective: Linux 101
 
 Task 1: Perform a directory listing of your home directory to find a troll and retrieve a present!
 
@@ -136,13 +136,13 @@ Answer: *kill 12771*
 
 ---
 
-Objective 4: Reportinator
+Objective: Reportinator
 
 
 
 ---
 
-Objective 5: Azure 101
+Objective: Azure 101
 
 Task 1: You may not know this but the Azure cli help messages are very easy to access. First, try typing:
 $ az help | less
@@ -191,7 +191,7 @@ Answer: az vm run-command invoke -g northpole-rg2 -n NP-VM1 --command-id RunShel
 
 ---
 
-Objective 6: Elf Hunt
+Objective: Elf Hunt
 
 After reading about JSON Web Tokens (JWTs), I learned about a flaw to force the server to accept a token with no signature present. I found a cookie that appeared to be the JWT for Elf Hunt called "ElfHunt_JWT". The JWT was already flawed since the "alg" parameter was set to none, which made my job easier. I simply had to decode the cookie using CyberChef. It took a few tries messing around with the speed until the elves were just fast enough...
 
@@ -207,6 +207,70 @@ GLORY:
 
 ---
 
+Objective: Certificate SSHenanigans
+
+Domain: **ssh-server-vm.santaworkshopgeeseislands.org** 
+
+Account: **monitor**
+
+Goal: **access TODO list**
+
+---
+
+Objective: Faster Lock Combination
+
+When applying tension to the shackle and turning the dial clockwise, the number that the lock repeatedly hangs on is the sticky number. 
+
+Sticky Number: 26
+
+When applying heavy tension to the shackle and turning the lock counter clockwise, the numbers we are looking for will sit between two half numbers and will be between 0-11
+
+Guess Number 1:9
+
+Guess Number 2:10
 
 
 
+First Digit: Sticky Number + 5 = ***31***
+
+Third Digit: 19 OR 39, 39 feels more loose when applying tension to the shackle so we can eliminate 19 as an option
+
+
+
+Third Digit Process: 
+
+First Digit/4 = 7 with remainder of 3
+
+Guess Numbers: 9 & 10
+
+9    19    29    39
+
+10   20   30    0 
+
+
+
+19/4 = 4 with remainder of 3 & 39/4 = 6 with remainder of 3
+
+
+
+Second Digit Process:
+
+
+
+First Row Below: Remainder + 2  = 5
+
+Add 8 to it 4 times, exceeding 39 resets to 0
+
+Second Row Below: remainder + 2 + 4 = 9
+
+Add 8 to it 4 times, exceeding 39 resets to 0
+
+
+
+5    13    21   29    ~~37~~
+
+9    17    25    33    ~~1~~
+
+
+
+The second and third digit on the lock cannot be within 2 digits of eachother, we can eliminate 37 & 1 from our second digit guesses. 
