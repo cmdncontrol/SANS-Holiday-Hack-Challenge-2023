@@ -191,4 +191,22 @@ Answer: az vm run-command invoke -g northpole-rg2 -n NP-VM1 --command-id RunShel
 
 ---
 
+Objective 6: Elf Hunt
+
+After reading about JSON Web Tokens (JWTs), I learned about a flaw to force the server to accept a token with no signature present. I found a cookie that appeared to be the JWT for Elf Hunt called "ElfHunt_JWT". The JWT was already flawed since the "alg" parameter was set to none, which made my job easier. I simply had to decode the cookie using CyberChef. It took a few tries messing around with the speed until the elves were just fast enough...
+
+Original Cookie: eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzcGVlZCI6LTUwMH0. 
+
+Decoded Original: {"alg":"none","typ":"JWT"}>{"speed":-500}>
+
+Answer: I ended up finding that -50 was a good speed. I replaced the cookie in my session with my new base64 encoded speed variable. The full cookie value became *eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzcGVlZCI6LTUwfT4.*
+
+GLORY:
+
+![](/docs/assets/images/elfhunt.png)
+
+---
+
+
+
 
