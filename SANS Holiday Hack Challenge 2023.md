@@ -281,7 +281,7 @@ After trying the 8 options, our true combination is: 25, 39, 13!
 
 
 
-If you want to "hack" the challenge instead, you can look at the javascript variables in the iframe to reveal the combination for your session.
+If you want to "hack" the challenge instead, you can look at the javascript variables in the iframe to reveal the combination for your session. The variable that holds the combination is: lock_numbers
 
 ![]()
 
@@ -290,5 +290,73 @@ If you want to "hack" the challenge instead, you can look at the javascript vari
 You can also edit the lock combination that the game is looking for if you'd like. This just makes it faster to solve the combo :D 
 
 ![]()
+
+---
+
+Objective: Phish Detection Agency
+
+
+
+Valid SPF: 
+
+| Domain           | Type | Value                               |
+| ---------------- | ---- | ----------------------------------- |
+| geeseislands.com | TXT  | v=spf1 a:mail.geeseislands.com -all |
+
+Valid DKIM:
+
+| Domain           | Type | Value                                                                                                                                                                                                                                  |
+| ---------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| geeseislands.com | TXT  | v=DKIM1;t=s;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjtqsLqwecFGF7AmP+Siln86O1v9NOKJw4ZsEHDV5fo0Vjj0qNPyyARKSkDmnIKjnzLGUUQO31Fr+vdZU61IaI9/ZD39WJKaAeX96uQ65mRQqqPVYxPLN5OvuFRmIHJ/TgOkD6z5/7VM7Zs1kw5Qnl04FmOLwWd00D+uNZnj8TCwIDAQAB |
+
+Valid DMARC:
+
+| Domain           | Type | Value                                                                  |
+| ---------------- | ---- | ---------------------------------------------------------------------- |
+| geeseislands.com | TXT  | v=DMARC1; p=reject; pct=100; rua=mailto:dmarc-reports@geeseislands.com |
+
+In this challenge we had to weed through all the emails in the Inbox along with those that were already in the Phishing folder to determine if ChatNPT properly assessed the emails. The key piecees to look at in the email headers displayed was:
+
+Return-Path - if the return path was not for emailaddress@geeseislands.com the email should be marked as malicious, as all mail is expected to be from that domain in this challenge
+
+DMARC - if this value is set to "Fail", you can assume phishing in this challenge
+
+DKIM-Signature - if the domain value (d=) in the signature is not geeseislands.com, you can assume it is a phishing email OR if this is just showing "Invalid"
+
+Recieved - If the received field is from a different domain than the expected sender of geeseislands.com, you can assume it is a phishing email
+
+
+
+Phish email example 1:
+
+![](/docs/assets/images/phish1.png)
+
+Phish email example 2:
+
+![](/docs/assets/images/phish2.png)
+
+Valid email example 1:
+
+![](/docs/assets/images/valid1.png)
+
+GLORY:
+
+![](/docs/assets/images/acedetect.png)
+
+---
+
+Objective: Na'an
+
+
+
+If you cover both the numerical low (0) and high (9) and use NaN as one of the options, the other numbers you place do not matter. The evaluation will fail in your favor. As long as you cover the extremes NaN will be seen as winner for both min and max due to the python evaluation error. 
+
+
+
+GLORY:
+
+![](/docs/assets/images/nan.png)
+
+---
 
 
