@@ -221,35 +221,35 @@ Objective: Faster Lock Combination
 
 When applying tension to the shackle and turning the dial clockwise, the number that the lock repeatedly hangs on is the sticky number. 
 
-Sticky Number: 26
+Sticky Number: 20
 
 When applying heavy tension to the shackle and turning the lock counter clockwise, the numbers we are looking for will sit between two half numbers and will be between 0-11
 
-Guess Number 1:9
+Guess Number 1: 0
 
-Guess Number 2:10
+Guess Number 2: 3
 
 
 
-First Digit: Sticky Number + 5 = ***31***
+First Digit: Sticky Number + 5 = ***25***
 
-Third Digit: 19 OR 39, 39 feels more loose when applying tension to the shackle so we can eliminate 19 as an option
+Third Digit: 13  OR 33, 13 feels more loose when applying tension to the shackle so we can eliminate 33 as an option
 
 
 
 Third Digit Process: 
 
-First Digit/4 = 7 with remainder of 3
+First Digit/4 = 6 with remainder of 1
 
-Guess Numbers: 9 & 10
+Guess Numbers: 0 & 3
 
-9    19    29    39
+0    10    20   30
 
-10   20   30    0 
+3    13    23    33
 
 
 
-19/4 = 4 with remainder of 3 & 39/4 = 6 with remainder of 3
+13/4 = 4 with remainder of 1 & 33/4 = 8 with remainder of 1
 
 
 
@@ -257,20 +257,38 @@ Second Digit Process:
 
 
 
-First Row Below: Remainder + 2  = 5
+First Row Below: Remainder + 2  = 3
 
 Add 8 to it 4 times, exceeding 39 resets to 0
 
-Second Row Below: remainder + 2 + 4 = 9
+Second Row Below: remainder + 2 + 4 = 7
 
 Add 8 to it 4 times, exceeding 39 resets to 0
 
 
 
-5    13    21   29    ~~37~~
+3    ~~11~~    19    27    35
 
-9    17    25    33    ~~1~~
+7    ~~15~~     23    31    39
 
 
 
-The second and third digit on the lock cannot be within 2 digits of eachother, we can eliminate 37 & 1 from our second digit guesses. 
+The second and third digit on the lock cannot be within 2 digits of eachother, we can eliminate 15 & 17 from our second digit guesses. 
+
+
+
+After trying the 8 options, our true combination is: 25, 39, 13!
+
+
+
+If you want to "hack" the challenge instead, you can look at the javascript variables in the iframe to reveal the combination for your session.
+
+![]()
+
+
+
+You can also edit the lock combination that the game is looking for if you'd like. This just makes it faster to solve the combo :D 
+
+![]()
+
+
