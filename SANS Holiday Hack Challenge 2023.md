@@ -451,11 +451,7 @@ Case 6: The final step!
 
 Question 1: What is the name of the executable the attackers used in the final malicious command?
 
-To start we need to find the last encoded powershell command ran by the attackers.
-
-![](/docs/assets/images/kd19.png)
-
-We can base64 decode it to reveal out answer.
+To start we need to find the last encoded powershell command ran by the attacker![](/docs/assets/images/kd19.png)We can base64 decode it to reveal our answer.
 
 ![]()
 
