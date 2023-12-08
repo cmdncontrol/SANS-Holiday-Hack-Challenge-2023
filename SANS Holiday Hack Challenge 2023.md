@@ -1,3 +1,9 @@
+
+
+
+
+
+
 # SANS Holiday Hack Challenge 2023
 
 ---
@@ -325,19 +331,13 @@ GLORY:
 
 Operation: Kusto Detective
 
-
-
 Onboarding: How many craftperson elves are using laptops?
 
 ![](/docs/assets/images/kd1.png)
 
 Answer: *25*
 
-
-
 Case 1: Welcome to Operation Giftwrap: Defending the Geese Island network
-
-
 
 Question 1: What is the email address of the employee who received this phishing email?
 
@@ -345,15 +345,11 @@ Question 1: What is the email address of the employee who received this phishing
 
 Answer: *alabaster_snowball@santaworkshopgeeseislands.org*
 
-
-
 Question 2: What is the email address that was used to send this spear phishing email?
 
 ![](/docs/assets/images/kd3.png)
 
 Answer: *cwombley@gmail.com*
-
-
 
 Question 3: What was the subject line used in the spear phishing email?
 
@@ -361,11 +357,7 @@ Question 3: What was the subject line used in the spear phishing email?
 
 Answer: *[EXTERNAL] Invoice foir reindeer food past due*
 
-
-
 Case 2: Someone got phished! Let's dig deeper on the victim...
-
-
 
 Question 1: What is the role of our victim in the organization?
 
@@ -385,11 +377,7 @@ Question 3: What is the source IP linked to the victim?
 
 Answer: *10.10.0.4*
 
-
-
 Case 3: That's not good. What happened next?
-
-
 
 Question 1: What time did Alabaster click on the malicious link? Make sure to copy the exact timestamp from the logs!
 
@@ -403,4 +391,80 @@ Question 2: What file is dropped to Alabaster's machine shortly after he downloa
 
 Answer: *giftwrap.exe*
 
+Case 4: A compromised host! Time for a deep dive.
 
+Question 1: The attacker created an reverse tunnel connection with the compromised machine. What IP was the connection forwarded to?
+
+![](/docs/assets/images/kd10.png)
+
+Answer: *113.37.9.17*
+
+Question 2: What is the timestamp when the attackers enumerated network shares on the machine?
+
+![](/docs/assets/images/kd11.png)
+
+Answer: *2023-12-02 16:51:44.0000000*
+
+Question 3: What was the hostname of the system the attacker moved laterally to?
+
+![](/docs/assets/images/kd12.png)
+
+Answer: *NorthPolefileshare*
+
+Case 5: A hidden message
+
+Question 1: When was the attacker's first base64 encoded PowerShell command executed on Alabaster's machine?
+
+![](/docs/assets/images/kd13.png)
+
+Answer: *2023-12-24 16:07:47.0000000*
+
+Question 2: What was the name of the file the attacker copied from the fileshare? (This might require some additional decoding)
+
+We can check out the first encoded powershell command after the attacker accessed the fileshare.
+
+![](/docs/assets/images/kd14.png)
+
+After base64 decoding, we can see that this is also reversed. We can use the reverse() command to assist here and reveal the answer.
+
+![]()
+
+Answer: *NaughtyNiceList.txt*
+
+Question 3: The attacker has likely exfiltrated data from the file share. What domain name was the data exfiltrated to?
+
+We can review the next powershell command after the file was copied. 
+
+![](/docs/assets/images/kd16.png)
+
+After base64 decoding, we can see that this command is also encoded in decimal. We need to convert this to ASCII for it to be easily legible.
+
+![](/docs/assets/images/kd17.png)
+
+I used: [charcode encoder-decoder](https://codepen.io/HerbertAnchovy/pen/XLzdYr) to decode the char decimal into ASCII, which revealed our answer.
+
+![](/docs/assets/images/kd18.png)
+
+Answer: *giftbox.com*
+
+Case 6: The final step!
+
+Question 1: What is the name of the executable the attackers used in the final malicious command?
+
+To start we need to find the last encoded powershell command ran by the attackers.
+
+![](/docs/assets/images/kd19.png)
+
+We can base64 decode it to reveal out answer.
+
+![]()
+
+Answer: *downwithsanta.exe*
+
+Question 2: What was the command line flag used alongside this executable?
+
+We can use the same decoded powershell to find the answer for this question.
+
+![](/docs/assets/images/kd20.png)
+
+Answer: *--wipeall*
