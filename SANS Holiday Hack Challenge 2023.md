@@ -362,3 +362,23 @@ Question 3: What was the subject line used in the spear phishing email?
 Answer: *[EXTERNAL] Invoice foir reindeer food past due*
 
 
+
+Case 2: Someone got phished! Let's dig deeper on the victim...
+
+
+
+Question 1: What is the role of our victim in the organization?
+
+![](/docs/assets/images/kd5.png)
+
+Answer: *Head Elf*
+
+Question 2: What is the hostname of the victim's machine?
+
+![](/docs/assets/images/kd6.png)
+
+Answer: *Y1US-DESKTOP*
+
+Question 3: What is the source IP linked to the victim?
+
+
