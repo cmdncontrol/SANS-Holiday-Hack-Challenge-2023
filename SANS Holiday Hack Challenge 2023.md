@@ -427,7 +427,7 @@ We can check out the first encoded powershell command after the attacker accesse
 
 After base64 decoding, we can see that this is also reversed. We can use the reverse() command to assist here and reveal the answer.
 
-![]()
+![](/docs/assets/images/kd15.png)
 
 Answer: *NaughtyNiceList.txt*
 
@@ -451,9 +451,9 @@ Case 6: The final step!
 
 Question 1: What is the name of the executable the attackers used in the final malicious command?
 
-To start we need to find the last encoded powershell command ran by the attacker![](/docs/assets/images/kd19.png)We can base64 decode it to reveal our answer.
 
-![]()
+
+![](/docs/assets/images/kd20.png)
 
 Answer: *downwithsanta.exe*
 
