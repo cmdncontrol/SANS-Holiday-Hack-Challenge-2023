@@ -8,8 +8,6 @@ To start you need to maneuver your boat and dock at Christmas Island: Oritentati
 
 ![Picture of boat at sea heading towards Orientation Island](/docs/assets/images/Dock.png)
 
-
-
 Task 1: First Terminal Challenge
 
 This is just to get your feet wet, simply enter *answer* to complete the challenge.
@@ -28,13 +26,9 @@ If you look at the source code of the iframe, you will find a singlePlayer varia
 
 Once you load into a private room, you can view the frame info to find the URL the frame is loading from. You will see the singleplayer variable set to false. If you copy the URL and update the <iframe> tag in Inspect with that URL and setting that variable to "true" it will load a single player game. 
 
-
-
 Once you defeat Santa, you achieve GLORY!
 
 ![](/docs/assets/images/VICTORY.png)
-
-
 
 However... why stop there?! You can also use the console once the game is started to alter other variables such as snowballDmg, playersVelocity, santaThrowDelay and more. There's many ways to make this challenge more fun. Pelting elves with no damage taken, who doesn't enjoy that?!
 
@@ -138,8 +132,6 @@ Answer: *kill 12771*
 
 Objective: Reportinator
 
-
-
 ---
 
 Objective: Azure 101
@@ -229,13 +221,9 @@ Guess Number 1: 0
 
 Guess Number 2: 3
 
-
-
 First Digit: Sticky Number + 5 = ***25***
 
 Third Digit: 13  OR 33, 13 feels more loose when applying tension to the shackle so we can eliminate 33 as an option
-
-
 
 Third Digit Process: 
 
@@ -247,15 +235,9 @@ Guess Numbers: 0 & 3
 
 3    13    23    33
 
-
-
 13/4 = 4 with remainder of 1 & 33/4 = 8 with remainder of 1
 
-
-
 Second Digit Process:
-
-
 
 First Row Below: Remainder + 2  = 3
 
@@ -265,27 +247,17 @@ Second Row Below: remainder + 2 + 4 = 7
 
 Add 8 to it 4 times, exceeding 39 resets to 0
 
-
-
 3    ~~11~~    19    27    35
 
 7    ~~15~~     23    31    39
 
-
-
 The second and third digit on the lock cannot be within 2 digits of eachother, we can eliminate 15 & 17 from our second digit guesses. 
 
-
-
 After trying the 8 options, our true combination is: 25, 39, 13!
-
-
 
 If you want to "hack" the challenge instead, you can look at the javascript variables in the iframe to reveal the combination for your session. The variable that holds the combination is: lock_numbers
 
 ![]()
-
-
 
 You can also edit the lock combination that the game is looking for if you'd like. This just makes it faster to solve the combo :D 
 
@@ -294,8 +266,6 @@ You can also edit the lock combination that the game is looking for if you'd lik
 ---
 
 Objective: Phish Detection Agency
-
-
 
 Valid SPF: 
 
@@ -325,8 +295,6 @@ DKIM-Signature - if the domain value (d=) in the signature is not geeseislands.c
 
 Recieved - If the received field is from a different domain than the expected sender of geeseislands.com, you can assume it is a phishing email
 
-
-
 Phish email example 1:
 
 ![](/docs/assets/images/phish1.png)
@@ -347,16 +315,50 @@ GLORY:
 
 Objective: Na'an
 
-
-
-If you cover both the numerical low (0) and high (9) and use NaN as one of the options, the other numbers you place do not matter. The evaluation will fail in your favor. As long as you cover the extremes NaN will be seen as winner for both min and max due to the python evaluation error. 
-
-
+If you cover both the numerical low (0) and high (9) and use NaN as one of the options, the other numbers you place do not matter. The evaluation will fail in your favor. As long as you cover the extremes, NaN will be seen as winner for both min and max due to the python evaluation error. 
 
 GLORY:
 
 ![](/docs/assets/images/nan.png)
 
 ---
+
+Operation: Kusto Detective
+
+
+
+Onboarding: How many craftperson elves are using laptops?
+
+![](/docs/assets/images/kd1.png)
+
+Answer: *25*
+
+
+
+Case 1: Welcome to Operation Giftwrap: Defending the Geese Island network
+
+
+
+Question 1: What is the email address of the employee who received this phishing email?
+
+![](/docs/assets/images/kd2.png)
+
+Answer: *alabaster_snowball@santaworkshopgeeseislands.org*
+
+
+
+Question 2: What is the email address that was used to send this spear phishing email?
+
+![](/docs/assets/images/kd3.png)
+
+Answer: *cwombley@gmail.com*
+
+
+
+Question 3: What was the subject line used in the spear phishing email?
+
+![](/docs/assets/images/kd4.png)
+
+Answer: *[EXTERNAL] Invoice foir reindeer food past due*
 
 
