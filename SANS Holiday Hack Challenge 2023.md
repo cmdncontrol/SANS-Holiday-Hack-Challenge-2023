@@ -381,4 +381,26 @@ Answer: *Y1US-DESKTOP*
 
 Question 3: What is the source IP linked to the victim?
 
+![](/docs/assets/images/kd7.png)
+
+Answer: *10.10.0.4*
+
+
+
+Case 3: That's not good. What happened next?
+
+
+
+Question 1: What time did Alabaster click on the malicious link? Make sure to copy the exact timestamp from the logs!
+
+![](/docs/assets/images/kd8.png)
+
+Answer: *2023-12-02T10:12:42Z*
+
+Question 2: What file is dropped to Alabaster's machine shortly after he downloads the malicious file?
+
+![](/docs/assets/images/kd9.png)
+
+Answer: *giftwrap.exe*
+
 
