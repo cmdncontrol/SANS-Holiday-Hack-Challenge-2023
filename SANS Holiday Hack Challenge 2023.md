@@ -1,9 +1,3 @@
-
-
-
-
-
-
 # SANS Holiday Hack Challenge 2023
 
 ---
@@ -463,8 +457,6 @@ We can use the same decoded powershell to find the answer for this question.
 
 Answer: *--wipeall*
 
-
-
 HHC23 Badge Answer
 
 After completing all the cases, you are presented with one final encoded command: 
@@ -475,8 +467,6 @@ print base64_decode_tostring('QmV3YXJlIHRoZSBDdWJlIHRoYXQgV29tYmxlcw==')
 
 ![](/docs/assets/images/kd21.png)
 
-
-
 We can put 
 
 ```javascript
@@ -484,3 +474,61 @@ Beware the Cube that Wombles
 ```
 
 into our badge on HHC23 to achieve GLORY!
+
+---
+
+Objective: Game Cartridges: Vol 1
+
+For this game, the goal is to move pixels of the QR code back to their correct place. There are 7 pixels out of place. As you send music notes through misplaced pixels they'll flash, make music, and a flashing square will appear where it shoud go. You simply push your character against the block to move it, you cannot pull a block or push.
+
+Known controls:
+
+- arrows keys to move around
+
+- (e) = a on the gameboy
+
+- (r) = b on the gameboy, for this game it shoots out the music notes
+
+If you look in the js/script.js file, you can find some additional controls that are unlisted.
+
+```javascript
+  bindKeys() {
+    this.keyFuncs = {
+      Backspace: this.keyRewind.bind(this),
+      " ": this.keyPause.bind(this),
+      "[": this.keyPrevPalette.bind(this),
+      "]": this.keyNextPalette.bind(this),
+    };
+```
+
+In the order shown, these allow you to:
+
+- Rewind the game, if you push a block to the wrong place simply hold Backspace and it will rewind time!
+
+- "Space", if you push spacebar it will pause the game
+
+- Return to the previous color palette for the game
+
+- Proceed to the next color palette for the game
+
+Once all pixels are in their correct location (Be careful with the last one! You need to travel some distance to get it to its proper home!) the game will reveal the full QR code. 
+
+![](/docs/assets/images/gcv1.png)
+
+
+
+This QR code is linked to 
+
+```javascript
+8bitelf.com
+```
+
+Visiting the website reveals the flag to plug into your badge. To achieve glory enter
+
+```javascript
+santaconfusedgivingplanetsqrcode
+```
+
+into your badge
+
+---
