@@ -451,8 +451,6 @@ Case 6: The final step!
 
 Question 1: What is the name of the executable the attackers used in the final malicious command?
 
-
-
 ![](/docs/assets/images/kd20.png)
 
 Answer: *downwithsanta.exe*
@@ -464,3 +462,25 @@ We can use the same decoded powershell to find the answer for this question.
 ![](/docs/assets/images/kd20.png)
 
 Answer: *--wipeall*
+
+
+
+HHC23 Badge Answer
+
+After completing all the cases, you are presented with one final encoded command: 
+
+```javascript
+print base64_decode_tostring('QmV3YXJlIHRoZSBDdWJlIHRoYXQgV29tYmxlcw==')
+```
+
+![](/docs/assets/images/kd21.png)
+
+
+
+We can put 
+
+```javascript
+Beware the Cube that Wombles
+```
+
+into our badge on HHC23 to achieve GLORY!
