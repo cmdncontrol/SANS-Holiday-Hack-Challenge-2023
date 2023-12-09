@@ -1049,6 +1049,6 @@ Objective: Luggage Lock
 
 Not much skill or technique here... just apply the right amount of pressure until all wheels lock into a position, then apply full pressure to the lock and watch the zipper pop open!
 
-![](/docs/assets/images/ll1.png)
+![](/docs/assets/images/ll.png)
 
 ---
