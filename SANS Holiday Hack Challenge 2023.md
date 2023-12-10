@@ -261,7 +261,7 @@ If you want to "hack" the challenge instead, you can look at the javascript vari
 
 You can also edit the lock combination that the game is looking for if you'd like. This just makes it faster to solve the combo :D 
 
-![]()
+![](/docs/assets/images/variables.png)
 
 ---
 
