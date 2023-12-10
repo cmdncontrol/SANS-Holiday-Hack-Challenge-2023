@@ -2,13 +2,13 @@
 
 ---
 
-Objective: Holiday Hack Orientation
+## Objective: Holiday Hack Orientation
 
 To start you need to maneuver your boat and dock at Christmas Island: Oritentation
 
 ![Picture of boat at sea heading towards Orientation Island](/docs/assets/images/Dock.png)
 
-Task 1: First Terminal Challenge
+### Task 1: First Terminal Challenge
 
 This is just to get your feet wet, simply enter
 
@@ -22,7 +22,7 @@ to complete the challenge.
 
 ---
 
-Objective: Snowball Fight
+## Objective: Snowball Fight
 
 You could play with another player to fight Santa and win, but that defeats the whole purpose of hacking...
 
@@ -42,11 +42,11 @@ However... why stop there?! You can also use the console once the game is starte
 
 ---
 
-Objective: Linux 101
+## Objective: Linux 101
 
-Task 1: Perform a directory listing of your home directory to find a troll and retrieve a present!
+### Task 1: Perform a directory listing of your home directory to find a troll and retrieve a present!
 
-Answer: 
+Answer:
 
 ```
 ls
@@ -85,8 +85,6 @@ pwd
 
 
 Task 5: Good job but it looks like another troll hid itself in your home directory. Find the hidden troll!
-
-
 
 Answer: 
 
@@ -138,8 +136,6 @@ grep -ri "troll"
 
 
 Task 10: 
-
-
 
 Answer: 
 
@@ -262,11 +258,11 @@ kill 12771
 
 ---
 
-Objective: Reportinator
+## Objective: Reportinator
 
 ---
 
-Objective: Azure 101
+## Objective: Azure 101
 
 Task 1: You may not know this but the Azure cli help messages are very easy to access. First, try typing:
 $ az help | less
@@ -353,7 +349,7 @@ az vm run-command invoke -g northpole-rg2 -n NP-VM1 --command-id RunShellScript 
 
 ---
 
-Objective: Elf Hunt
+## Objective: Elf Hunt
 
 After reading about JSON Web Tokens (JWTs), I learned about a flaw to force the server to accept a token with no signature present. I found a cookie that appeared to be the JWT for Elf Hunt called "ElfHunt_JWT". The JWT was already flawed since the "alg" parameter was set to none, which made my job easier. I simply had to decode the cookie using CyberChef. It took a few tries messing around with the speed until the elves were just fast enough...
 
@@ -381,7 +377,7 @@ GLORY:
 
 ---
 
-Objective: Certificate SSHenanigans
+## Objective: Certificate SSHenanigans
 
 Domain: **ssh-server-vm.santaworkshopgeeseislands.org** 
 
@@ -391,7 +387,7 @@ Goal: **access TODO list**
 
 ---
 
-Objective: Faster Lock Combination
+## Objective: Faster Lock Combination
 
 When applying tension to the shackle and turning the dial clockwise, the number that the lock repeatedly hangs on is the sticky number. 
 
@@ -447,7 +443,7 @@ You can also edit the lock combination that the game is looking for if you'd lik
 
 ---
 
-Objective: Phish Detection Agency
+## Objective: Phish Detection Agency
 
 Valid SPF: 
 
@@ -495,7 +491,7 @@ GLORY:
 
 ---
 
-Objective: Na'an
+## Objective: Na'an
 
 If you cover both the numerical low (0) and high (9) and use NaN as one of the options, the other numbers you place do not matter. The evaluation will fail in your favor. As long as you cover the extremes, NaN will be seen as winner for both min and max due to the python evaluation error. 
 
@@ -505,7 +501,7 @@ GLORY:
 
 ---
 
-Operation: Kusto Detective
+## Operation: Kusto Detective
 
 Onboarding: How many craftperson elves are using laptops?
 
@@ -755,7 +751,7 @@ into our badge on HHC23 to achieve GLORY!
 
 ---
 
-Objective: Game Cartridges: Vol 1
+## Objective: Game Cartridges: Vol 1
 
 For this game, the goal is to move pixels of the QR code back to their correct place. There are 7 pixels out of place. As you send music notes through misplaced pixels they'll flash, make music, and a flashing square will appear where it shoud go. You simply push your character against the block to move it, you cannot pull a block or push.
 
@@ -807,7 +803,7 @@ santaconfusedgivingplanetsqrcode
 
 ---
 
-Objective: Hashcat
+## Objective: Hashcat
 
 Instructions:
 
@@ -964,7 +960,7 @@ Your answer is correct!
 
 ---
 
-Objective: Linux PrivEsc
+## Objective: Linux PrivEsc
 
 Instructions:
 
@@ -1316,7 +1312,7 @@ GLORY!
 
 ---
 
-Objective: Luggage Lock
+## Objective: Luggage Lock
 
 Not much skill or technique here... just apply the right amount of pressure until all wheels lock into a position, then apply full pressure to the lock and watch the zipper pop open!
 
@@ -1324,7 +1320,7 @@ Not much skill or technique here... just apply the right amount of pressure unti
 
 ---
 
-Objective: Game Cartidges: Vol 2
+## Objective: Game Cartidges: Vol 2
 
 The hint for this one is very useful.
 
