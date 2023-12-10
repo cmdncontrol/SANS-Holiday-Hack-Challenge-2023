@@ -1134,9 +1134,7 @@ If you interact with the radio on the right, a morse code message begins to play
 
 Morse code audio
 
-<video controls="" autoplay="" name="media">
-    <source src="/docs/assets/images/MorseCode.m4a" type="audio/mp4">
-</video>
+[![](/docs/assets/images/MorseCode.m4a)]
 
 Morse code
 
