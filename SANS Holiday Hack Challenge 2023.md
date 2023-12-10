@@ -10,7 +10,13 @@ To start you need to maneuver your boat and dock at Christmas Island: Oritentati
 
 Task 1: First Terminal Challenge
 
-This is just to get your feet wet, simply enter *answer* to complete the challenge.
+This is just to get your feet wet, simply enter
+
+```
+answer
+```
+
+to complete the challenge.
 
 ![](/docs/assets/images/Orientation.png)
 
@@ -40,93 +46,218 @@ Objective: Linux 101
 
 Task 1: Perform a directory listing of your home directory to find a troll and retrieve a present!
 
-Answer: *ls*
+Answer: 
+
+```
+ls
+```
+
+
 
 Task 2: Now find the troll inside the troll.
 
-Answer: *cat troll 19315479765589239*
+Answer: 
+
+```
+cat troll 19315479765589239
+```
+
+
 
 Task 3: Great, now remove the troll in your home directory.
 
-Answer: *rm troll 19315479765589239*
+Answer: 
+
+```
+rm troll 19315479765589239
+```
+
+
 
 Task 4: Print the present working directory using a command.
 
-Answer: *pwd*
+Answer: 
+
+```
+pwd
+```
+
+
 
 Task 5: Good job but it looks like another troll hid itself in your home directory. Find the hidden troll!
 
 Use ls -la to reveal hidden files
 
-Answer: *cat .troll_5074624024543078*
+Answer: 
+
+```
+cat .troll_5074624024543078
+```
+
+
 
 Task 6: Excellent, now find the troll in your command history.
 
-Answer: *history*
+Answer: 
+
+```
+history
+```
+
+
 
 Task 7: Find the troll in your environment variables.
 
-Answer: *env*
+Answer: 
+
+```
+env
+```
+
+
 
 Task 8: Next, head into the workshop.
 
-Answer: *cd workshop*
+Answer: 
+
+```
+cd workshop
+```
+
+
 
 Task 9: A troll is hiding in one of the workshop toolboxes. Use "grep" while ignoring case to find which toolbox the troll is in.
 
-Answer: *grep -ri "troll"*
+Answer: 
+
+```
+grep -ri "troll"
+```
+
+
 
 Task 10: 
 
-chmod +x present engine to make the file executable
 
-Answer: *./present engine*
+
+Answer: 
+
+```
+chmod +x present engine
+./present engine
+```
+
+
 
 Task 11: Trolls have blown the fuses in /home/elf/workshop/electrical. cd into electrical and rename blown_fuse0 to fuse0.
 
-Change to the proper directory using cd
+Answer: 
 
-Answer: *mv blown fuse0 fuse0*
+```
+cd /home/elf/workshop electrical
+mv blown_fuse0 fuse0
+```
+
+
 
 Task 12:  Now, make a symbolic link (symlink) named fuse1 that points to fuse0
 
-Answer: *ln -s fuse0 fuse1*
+Answer:
+
+```
+ln -s fuse0 fuse1
+```
+
+
 
 Task 13: Make a copy of fuse1 named fuse2.
 
-Answer: *cp fuse1 fuse2*
+Answer: 
+
+```
+cp fuse1 fuse2
+```
+
+
 
 Task 14: We need to make sure trolls don't come back. Add the characters "TROLL_REPELLENT" into the file fuse2
 
-Answer: *echo "TROLL_REPELLENT" > fuse2*
+Answer: 
+
+```
+echo "TROLL_REPELLENT" > fuse2
+```
+
+
 
 Task 15: Find the troll somewhere in /opt/troll_den.
 
-Answer: *find /opt/troll_den/ -iname "troll*"*
+Answer: 
 
- Task 16: Find the file somewhere in /opt/troll_den that is owned by the user troll.
+```
+find /opt/troll_den/ -iname "troll*"
+```
 
-Answer: *find /opt/troll_den/ -user "troll"*
+
+
+Task 16: Find the file somewhere in /opt/troll_den that is owned by the user troll.
+
+Answer: 
+
+```
+find /opt/troll_den/ -user "troll"
+```
+
+
 
 Task 17: Find the file created by trolls that is greater than 108 kilobytes and less than 110 kilobytes located somewhere in /opt/troll_den.
 
-Answer: *find /opt/troll_den/ -size +108k -size -110k*
+Answer: 
+
+```
+find /opt/troll_den/ -size +108k -size -110k
+```
+
+
 
 Task 18: List running processes to find another troll
 
-Answer: *ps aux*
+Answer: 
+
+```
+ps aux
+```
+
+
 
 Task 19: The 14516_troll process is listening on a TCP port. Use a command to have the only listening port display to the screen.
 
-Answer: *netstat -l*
+Answer:
+
+```
+netstat -l
+```
+
+
 
 Task 20: The service listening on port 54321 is an HTTP server. Interact with this server to retrieve the last troll.
 
-Answer: *curl 0.0.0.0:54321*
+Answer: 
+
+```
+curl 0.0.0.0:54321
+```
+
+
 
 Task 21: Your final task is to stop the 14516_troll process to collect the remaining presents.
 
-Answer: *kill 12771*
+Answer:
+
+```
+ps aux
+kill 12771
+```
 
 ---
 
@@ -139,45 +270,77 @@ Objective: Azure 101
 Task 1: You may not know this but the Azure cli help messages are very easy to access. First, try typing:
 $ az help | less
 
-Answer: *az help | less*
+Answer: 
+
+```
+az help | less
+```
+
+
 
 Task 2: Next, you've already been configured with credentials. Use 'az' and your 'account' to 'show' your current details and make sure to pipe to less ( | less )
 
 Answer: *az account show | less*
 
-![]()
+![](/docs/assets/images/azshow.png)
+
+
 
 Task 3: Excellent! Now get a list of resource groups in Azure.
 For more information:
 https://learn.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest
 
-Answer: *az group list*
+Answer: 
+
+```
+az group list
+```
 
 ![](/docs/assets/images/azgroup.png)
+
+
 
 Task 4: Ok, now use one of the resource groups to get a list of function apps. For more information:
 https://learn.microsoft.com/en-us/cli/azure/functionapp?view=azure-cli-latest
 Note: Some of the information returned from this command relates to other cloud assets used by Santa and his elves.
 
-Answer: *az functionapp list -g "northpole-rg1"*
+Answer: 
+
+```
+az functionapp list -g "northpole-rg1"
+```
+
+
 
 You could've also used northpole-rg2 here. This also revealed an interesting URL: https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl
 
 ![](/docs/assets/images/azfunctionapp.png)
 
+
+
 Task 5: Find a way to list the only VM in one of the resource groups you have access to.
 For more information:
 https://learn.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest
 
-Answer: *az vm list -g "northpole-rg2"*
+Answer: 
+
+```
+az vm list -g "northpole-rg2"
+```
 
 ![](/docs/assets/images/azvms.png)
+
+
 
 Task 6: Find a way to invoke a run-command against the only Virtual Machine (VM) so you can RunShellScript and get a directory listing to reveal a file on the Azure VM.
 For more information:
 https://learn.microsoft.com/en-us/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke
 
-Answer: az vm run-command invoke -g northpole-rg2 -n NP-VM1 --command-id RunShellScript --scripts "ls"
+Answer: 
+
+```
+az vm run-command invoke -g northpole-rg2 -n NP-VM1 --command-id RunShellScript --scripts "ls"
+```
 
 ![](/docs/assets/images/azls.png)
 
@@ -187,11 +350,23 @@ Objective: Elf Hunt
 
 After reading about JSON Web Tokens (JWTs), I learned about a flaw to force the server to accept a token with no signature present. I found a cookie that appeared to be the JWT for Elf Hunt called "ElfHunt_JWT". The JWT was already flawed since the "alg" parameter was set to none, which made my job easier. I simply had to decode the cookie using CyberChef. It took a few tries messing around with the speed until the elves were just fast enough...
 
-Original Cookie: eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzcGVlZCI6LTUwMH0. 
+Original Cookie: 
 
-Decoded Original: {"alg":"none","typ":"JWT"}>{"speed":-500}>
+```
+eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzcGVlZCI6LTUwMH0.
+```
 
-Answer: I ended up finding that -50 was a good speed. I replaced the cookie in my session with my new base64 encoded speed variable. The full cookie value became *eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzcGVlZCI6LTUwfT4.*
+Decoded Original: 
+
+```
+{"alg":"none","typ":"JWT"}>{"speed":-500}>
+```
+
+Answer: I ended up finding that -50 was a good speed. I replaced the cookie in my session with my new base64 encoded speed variable. The full cookie value became 
+
+```
+eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzcGVlZCI6LTUwfT4.
+```
 
 GLORY:
 
@@ -258,8 +433,6 @@ After trying the 8 options, our true combination is: 25, 39, 13!
 If you want to "hack" the challenge instead, you can look at the javascript variables in the iframe to reveal the combination for your session. The variable that holds the combination is: lock_numbers
 
 ![](/docs/assets/images/lock.png)
-
-
 
 You can also edit the lock combination that the game is looking for if you'd like. This just makes it faster to solve the combo :D
 
@@ -339,19 +512,37 @@ Question 1: What is the email address of the employee who received this phishing
 
 ![](/docs/assets/images/kd2.png)
 
-Answer: *alabaster_snowball@santaworkshopgeeseislands.org*
+Answer: 
+
+```
+alabaster_snowball@santaworkshopgeeseislands.org
+```
+
+
 
 Question 2: What is the email address that was used to send this spear phishing email?
 
 ![](/docs/assets/images/kd3.png)
 
-Answer: *cwombley@gmail.com*
+Answer: 
+
+```
+ cwombley@gmail.com
+```
+
+
 
 Question 3: What was the subject line used in the spear phishing email?
 
 ![](/docs/assets/images/kd4.png)
 
-Answer: *[EXTERNAL] Invoice foir reindeer food past due*
+Answer: 
+
+```
+[EXTERNAL] Invoice foir reindeer food past due
+```
+
+
 
 Case 2: Someone got phished! Let's dig deeper on the victim...
 
@@ -359,19 +550,37 @@ Question 1: What is the role of our victim in the organization?
 
 ![](/docs/assets/images/kd5.png)
 
-Answer: *Head Elf*
+Answer: 
+
+```
+Head Elf
+```
+
+
 
 Question 2: What is the hostname of the victim's machine?
 
 ![](/docs/assets/images/kd6.png)
 
-Answer: *Y1US-DESKTOP*
+Answer: 
+
+```
+Y1US-DESKTOP
+```
+
+
 
 Question 3: What is the source IP linked to the victim?
 
 ![](/docs/assets/images/kd7.png)
 
-Answer: *10.10.0.4*
+Answer: 
+
+```
+10.10.0.4
+```
+
+
 
 Case 3: That's not good. What happened next?
 
@@ -379,13 +588,25 @@ Question 1: What time did Alabaster click on the malicious link? Make sure to co
 
 ![](/docs/assets/images/kd8.png)
 
-Answer: *2023-12-02T10:12:42Z*
+Answer: 
+
+```
+2023-12-02T10:12:42Z
+```
+
+
 
 Question 2: What file is dropped to Alabaster's machine shortly after he downloads the malicious file?
 
 ![](/docs/assets/images/kd9.png)
 
-Answer: *giftwrap.exe*
+Answer: 
+
+```
+giftwrap.exe
+```
+
+
 
 Case 4: A compromised host! Time for a deep dive.
 
@@ -393,19 +614,37 @@ Question 1: The attacker created an reverse tunnel connection with the compromis
 
 ![](/docs/assets/images/kd10.png)
 
-Answer: *113.37.9.17*
+Answer: 
+
+```
+113.37.9.17
+```
+
+
 
 Question 2: What is the timestamp when the attackers enumerated network shares on the machine?
 
 ![](/docs/assets/images/kd11.png)
 
-Answer: *2023-12-02 16:51:44.0000000*
+Answer: 
+
+```
+2023-12-02 16:51:44.0000000
+```
+
+
 
 Question 3: What was the hostname of the system the attacker moved laterally to?
 
 ![](/docs/assets/images/kd12.png)
 
-Answer: *NorthPolefileshare*
+Answer: 
+
+```
+NorthPolefileshare
+```
+
+
 
 Case 5: A hidden message
 
@@ -413,7 +652,13 @@ Question 1: When was the attacker's first base64 encoded PowerShell command exec
 
 ![](/docs/assets/images/kd13.png)
 
-Answer: *2023-12-24 16:07:47.0000000*
+Answer: 
+
+```
+2023-12-24 16:07:47.0000000
+```
+
+
 
 Question 2: What was the name of the file the attacker copied from the fileshare? (This might require some additional decoding)
 
@@ -425,7 +670,13 @@ After base64 decoding, we can see that this is also reversed. We can use the rev
 
 ![](/docs/assets/images/kd15.png)
 
-Answer: *NaughtyNiceList.txt*
+Answer: 
+
+```
+NaughtyNiceList.txt
+```
+
+
 
 Question 3: The attacker has likely exfiltrated data from the file share. What domain name was the data exfiltrated to?
 
@@ -441,7 +692,13 @@ I used: [charcode encoder-decoder](https://codepen.io/HerbertAnchovy/pen/XLzdYr)
 
 ![](/docs/assets/images/kd18.png)
 
-Answer: *giftbox.com*
+Answer: 
+
+```
+giftbox.com
+```
+
+
 
 Case 6: The final step!
 
@@ -449,7 +706,13 @@ Question 1: What is the name of the executable the attackers used in the final m
 
 ![](/docs/assets/images/kd20.png)
 
-Answer: *downwithsanta.exe*
+Answer: 
+
+```
+downwithsanta.exe
+```
+
+
 
 Question 2: What was the command line flag used alongside this executable?
 
@@ -457,7 +720,13 @@ We can use the same decoded powershell to find the answer for this question.
 
 ![](/docs/assets/images/kd20.png)
 
-Answer: *--wipeall*
+Answer: 
+
+```
+--wipeall
+```
+
+
 
 HHC23 Badge Answer
 
