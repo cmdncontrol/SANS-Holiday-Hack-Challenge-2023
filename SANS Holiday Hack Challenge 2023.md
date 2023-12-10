@@ -86,11 +86,12 @@ pwd
 
 Task 5: Good job but it looks like another troll hid itself in your home directory. Find the hidden troll!
 
-Use ls -la to reveal hidden files
+
 
 Answer: 
 
 ```
+ls -la
 cat .troll_5074624024543078
 ```
 
@@ -280,7 +281,13 @@ az help | less
 
 Task 2: Next, you've already been configured with credentials. Use 'az' and your 'account' to 'show' your current details and make sure to pipe to less ( | less )
 
-Answer: *az account show | less*
+Answer: 
+
+```
+az account show | less
+```
+
+
 
 ![](/docs/assets/images/azshow.png)
 
