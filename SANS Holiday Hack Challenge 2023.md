@@ -1052,3 +1052,100 @@ Not much skill or technique here... just apply the right amount of pressure unti
 ![](/docs/assets/images/ll.png)
 
 ---
+
+Objective: Game Cartidges: Vol 2
+
+The hint for this one is very useful.
+
+```bash
+Gameboy 2
+From: Tinsel Upatree
+Objective: Game Cartridges: Vol 2
+
+1) This feels the same, but different! 2) If it feels like you are going crazy, you probably are! Or maybe, just maybe, you've not yet figured out where the hidden ROM is hiding. 3) I think I may need to get a DIFFerent perspective. 4) I wonder if someone can give me a few pointers to swap.
+```
+
+For this objective I used:
+
+- BeyondCompare to view the hex data of the game files
+
+- mGBA as my GameBoy emulator
+
+- Ghidra to view the functions (not needed)
+
+
+
+When we try to play the game in the browser, we can see that are being blocked to continue through the path by T-Wiz. We need to find a way to edit the game to allow us access to the other side. 
+
+
+
+To find the location that the iframe is pulling the game frame, view your network traffic when you load the game. After you do this a few times, you'll find there appears to be two different versions that can load. 
+
+game0.gb
+
+![](/docs/assets/images/gcv21.png)
+
+game1.gb
+
+![](/docs/assets/images/gcv22.png)
+
+
+
+By visiting those domains, I can download a local copy of the GameBoy ROM files. Per the hint, we should take a look at the DIFFerences between the two versions. I used BeyondCompare to do this.
+
+![](/docs/assets/images/gcv23.png)
+
+
+
+Let's try changing some of the differences and loading the changed ROM into our emulator to see what happens. 
+
+Game0 hex -> Game1 hex  - change in game
+
+
+Successful Change 1:
+
+0x02 -> 0x01 - After talking to T-Wiz you are moved to the top of the screen instead of down, we can change this in game1 and be able to get through T-Wizz
+
+
+
+After T-Wizz telling me I cannot pass, I walk down to the bottom half of the game now.
+
+![](/docs/assets/images/gcv24.png)
+
+
+
+Successful Change 2:
+
+0b80 -> 0400 - Exit the start on the top of the screen rather than the bottom, we can change this in game 1 and be able to exit the start on the bottom of the screen directly to the sparkling spot
+
+
+
+After exiting orientation, I am located on the bottom of the game now.
+
+![](/docs/assets/images/gcv25.png)
+
+
+
+Room after entering the sparkling vortex.![](/docs/assets/images/gcv26.png)
+
+If you interact with the radio on the right, a morse code message begins to play. After decoding the message, you reveal the answer for your badge.
+
+
+
+Morse code audio
+
+ENTER HERE
+
+Morse code
+
+```
+--. .-.. ----- .-. -.--
+```
+
+Decoded
+
+```
+GL0RY
+```
+
+---
