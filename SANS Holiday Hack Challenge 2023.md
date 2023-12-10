@@ -44,7 +44,7 @@ However... why stop there?! You can also use the console once the game is starte
 
 ## Objective: Linux 101
 
-### Task 1: Perform a directory listing of your home directory to find a troll and retrieve a present!
+Task 1: Perform a directory listing of your home directory to find a troll and retrieve a present!
 
 Answer:
 
