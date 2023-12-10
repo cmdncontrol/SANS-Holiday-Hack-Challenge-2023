@@ -1108,7 +1108,7 @@ If you interact with the radio on the right, a morse code message begins to play
 
 Morse code audio
 
-[https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023/assets/139015523/198d7341-f59b-4bb7-ac63-c8aa84fee89a](https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023/blob/main/docs/assets/images/MorseCode.mp4)https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023/blob/main/docs/assets/images/MorseCode.mp4
+https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023/assets/139015523/4a09b005-fb33-4c2e-aa59-38d765d31fe4
 
 Morse code
 
