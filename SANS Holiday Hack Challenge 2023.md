@@ -1312,13 +1312,11 @@ GL0RY
 
 ---
 
-## Objective: BONUS: Fishing Guide & BONUS: Fishing Mastery
+## Objectives: BONUS: Fishing Guide & BONUS: Fishing Mastery
 
 If you inspect the game space and ensure you are set on the iframe while at see, you'll find a note for DEVs ONLY!
 
 ![](/docs/assets/images/dev.png)
-
-
 
 If we visit
 
@@ -1340,6 +1338,6 @@ After inverting the minimap colors, ensuring the same size images, and overlayin
 
 ![](/docs/assets/images/Cyberheat.png)
 
-
-
 We now know we need to fish right under the head of the goose on Steampunk island to find this prestigious fish! 
+
+---
