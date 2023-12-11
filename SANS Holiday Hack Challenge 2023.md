@@ -52,8 +52,6 @@ Answer:
 ls
 ```
 
-
-
 Task 2: Now find the troll inside the troll.
 
 Answer: 
@@ -61,8 +59,6 @@ Answer:
 ```
 cat troll 19315479765589239
 ```
-
-
 
 Task 3: Great, now remove the troll in your home directory.
 
@@ -72,8 +68,6 @@ Answer:
 rm troll 19315479765589239
 ```
 
-
-
 Task 4: Print the present working directory using a command.
 
 Answer: 
@@ -81,8 +75,6 @@ Answer:
 ```
 pwd
 ```
-
-
 
 Task 5: Good job but it looks like another troll hid itself in your home directory. Find the hidden troll!
 
@@ -93,8 +85,6 @@ ls -la
 cat .troll_5074624024543078
 ```
 
-
-
 Task 6: Excellent, now find the troll in your command history.
 
 Answer: 
@@ -102,8 +92,6 @@ Answer:
 ```
 history
 ```
-
-
 
 Task 7: Find the troll in your environment variables.
 
@@ -113,8 +101,6 @@ Answer:
 env
 ```
 
-
-
 Task 8: Next, head into the workshop.
 
 Answer: 
@@ -123,8 +109,6 @@ Answer:
 cd workshop
 ```
 
-
-
 Task 9: A troll is hiding in one of the workshop toolboxes. Use "grep" while ignoring case to find which toolbox the troll is in.
 
 Answer: 
@@ -132,8 +116,6 @@ Answer:
 ```
 grep -ri "troll"
 ```
-
-
 
 Task 10: 
 
@@ -144,8 +126,6 @@ chmod +x present engine
 ./present engine
 ```
 
-
-
 Task 11: Trolls have blown the fuses in /home/elf/workshop/electrical. cd into electrical and rename blown_fuse0 to fuse0.
 
 Answer: 
@@ -155,8 +135,6 @@ cd /home/elf/workshop electrical
 mv blown_fuse0 fuse0
 ```
 
-
-
 Task 12:  Now, make a symbolic link (symlink) named fuse1 that points to fuse0
 
 Answer:
@@ -164,8 +142,6 @@ Answer:
 ```
 ln -s fuse0 fuse1
 ```
-
-
 
 Task 13: Make a copy of fuse1 named fuse2.
 
@@ -175,8 +151,6 @@ Answer:
 cp fuse1 fuse2
 ```
 
-
-
 Task 14: We need to make sure trolls don't come back. Add the characters "TROLL_REPELLENT" into the file fuse2
 
 Answer: 
@@ -184,8 +158,6 @@ Answer:
 ```
 echo "TROLL_REPELLENT" > fuse2
 ```
-
-
 
 Task 15: Find the troll somewhere in /opt/troll_den.
 
@@ -195,8 +167,6 @@ Answer:
 find /opt/troll_den/ -iname "troll*"
 ```
 
-
-
 Task 16: Find the file somewhere in /opt/troll_den that is owned by the user troll.
 
 Answer: 
@@ -204,8 +174,6 @@ Answer:
 ```
 find /opt/troll_den/ -user "troll"
 ```
-
-
 
 Task 17: Find the file created by trolls that is greater than 108 kilobytes and less than 110 kilobytes located somewhere in /opt/troll_den.
 
@@ -215,8 +183,6 @@ Answer:
 find /opt/troll_den/ -size +108k -size -110k
 ```
 
-
-
 Task 18: List running processes to find another troll
 
 Answer: 
@@ -224,8 +190,6 @@ Answer:
 ```
 ps aux
 ```
-
-
 
 Task 19: The 14516_troll process is listening on a TCP port. Use a command to have the only listening port display to the screen.
 
@@ -235,8 +199,6 @@ Answer:
 netstat -l
 ```
 
-
-
 Task 20: The service listening on port 54321 is an HTTP server. Interact with this server to retrieve the last troll.
 
 Answer: 
@@ -244,8 +206,6 @@ Answer:
 ```
 curl 0.0.0.0:54321
 ```
-
-
 
 Task 21: Your final task is to stop the 14516_troll process to collect the remaining presents.
 
@@ -273,8 +233,6 @@ Answer:
 az help | less
 ```
 
-
-
 Task 2: Next, you've already been configured with credentials. Use 'az' and your 'account' to 'show' your current details and make sure to pipe to less ( | less )
 
 Answer: 
@@ -283,11 +241,7 @@ Answer:
 az account show | less
 ```
 
-
-
 ![](/docs/assets/images/azshow.png)
-
-
 
 Task 3: Excellent! Now get a list of resource groups in Azure.
 For more information:
@@ -301,8 +255,6 @@ az group list
 
 ![](/docs/assets/images/azgroup.png)
 
-
-
 Task 4: Ok, now use one of the resource groups to get a list of function apps. For more information:
 https://learn.microsoft.com/en-us/cli/azure/functionapp?view=azure-cli-latest
 Note: Some of the information returned from this command relates to other cloud assets used by Santa and his elves.
@@ -313,13 +265,9 @@ Answer:
 az functionapp list -g "northpole-rg1"
 ```
 
-
-
 You could've also used northpole-rg2 here. This also revealed an interesting URL: https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl
 
 ![](/docs/assets/images/azfunctionapp.png)
-
-
 
 Task 5: Find a way to list the only VM in one of the resource groups you have access to.
 For more information:
@@ -332,8 +280,6 @@ az vm list -g "northpole-rg2"
 ```
 
 ![](/docs/assets/images/azvms.png)
-
-
 
 Task 6: Find a way to invoke a run-command against the only Virtual Machine (VM) so you can RunShellScript and get a directory listing to reveal a file on the Azure VM.
 For more information:
@@ -521,8 +467,6 @@ Answer:
 alabaster_snowball@santaworkshopgeeseislands.org
 ```
 
-
-
 Question 2: What is the email address that was used to send this spear phishing email?
 
 ![](/docs/assets/images/kd3.png)
@@ -533,8 +477,6 @@ Answer:
  cwombley@gmail.com
 ```
 
-
-
 Question 3: What was the subject line used in the spear phishing email?
 
 ![](/docs/assets/images/kd4.png)
@@ -544,8 +486,6 @@ Answer:
 ```
 [EXTERNAL] Invoice foir reindeer food past due
 ```
-
-
 
 Case 2: Someone got phished! Let's dig deeper on the victim...
 
@@ -559,8 +499,6 @@ Answer:
 Head Elf
 ```
 
-
-
 Question 2: What is the hostname of the victim's machine?
 
 ![](/docs/assets/images/kd6.png)
@@ -571,8 +509,6 @@ Answer:
 Y1US-DESKTOP
 ```
 
-
-
 Question 3: What is the source IP linked to the victim?
 
 ![](/docs/assets/images/kd7.png)
@@ -582,8 +518,6 @@ Answer:
 ```
 10.10.0.4
 ```
-
-
 
 Case 3: That's not good. What happened next?
 
@@ -597,8 +531,6 @@ Answer:
 2023-12-02T10:12:42Z
 ```
 
-
-
 Question 2: What file is dropped to Alabaster's machine shortly after he downloads the malicious file?
 
 ![](/docs/assets/images/kd9.png)
@@ -608,8 +540,6 @@ Answer:
 ```
 giftwrap.exe
 ```
-
-
 
 Case 4: A compromised host! Time for a deep dive.
 
@@ -623,8 +553,6 @@ Answer:
 113.37.9.17
 ```
 
-
-
 Question 2: What is the timestamp when the attackers enumerated network shares on the machine?
 
 ![](/docs/assets/images/kd11.png)
@@ -635,8 +563,6 @@ Answer:
 2023-12-02 16:51:44.0000000
 ```
 
-
-
 Question 3: What was the hostname of the system the attacker moved laterally to?
 
 ![](/docs/assets/images/kd12.png)
@@ -646,8 +572,6 @@ Answer:
 ```
 NorthPolefileshare
 ```
-
-
 
 Case 5: A hidden message
 
@@ -660,8 +584,6 @@ Answer:
 ```
 2023-12-24 16:07:47.0000000
 ```
-
-
 
 Question 2: What was the name of the file the attacker copied from the fileshare? (This might require some additional decoding)
 
@@ -678,8 +600,6 @@ Answer:
 ```
 NaughtyNiceList.txt
 ```
-
-
 
 Question 3: The attacker has likely exfiltrated data from the file share. What domain name was the data exfiltrated to?
 
@@ -701,8 +621,6 @@ Answer:
 giftbox.com
 ```
 
-
-
 Case 6: The final step!
 
 Question 1: What is the name of the executable the attackers used in the final malicious command?
@@ -715,8 +633,6 @@ Answer:
 downwithsanta.exe
 ```
 
-
-
 Question 2: What was the command line flag used alongside this executable?
 
 We can use the same decoded powershell to find the answer for this question.
@@ -728,8 +644,6 @@ Answer:
 ```
 --wipeall
 ```
-
-
 
 HHC23 Badge Answer
 
@@ -1397,3 +1311,35 @@ GL0RY
 ```
 
 ---
+
+## Objective: BONUS: Fishing Guide & BONUS: Fishing Mastery
+
+If you inspect the game space and ensure you are set on the iframe while at see, you'll find a note for DEVs ONLY!
+
+![](/docs/assets/images/dev.png)
+
+
+
+If we visit
+
+```
+https://2023.holidayhackchallenge.com/sea/fishdensityref.html
+```
+
+We receive what appears to be heat maps of where the fish are located on the island...but there appears to be A LOT of fish varieties out there. We need some way to streamline our fishing endeavor. 
+
+There's one fish that seems to have a very specific spot it can be caught in. The **Piscis Cyberneticus Skodo**, seems to be hyper located in one spot. After searching through the sea sourcecode some more it revealed.
+
+```
+https://2023.holidayhackchallenge.com/sea/assets/minimap.png
+```
+
+This image holds the minimap of the islands. I wonder if we can overlay the two images, the heatmap for Cyberneticus and the islands to find our target fishing area...
+
+After inverting the minimap colors, ensuring the same size images, and overlaying we get the following image
+
+![](/docs/assets/images/Cyberheat.png)
+
+
+
+We now know we need to fish right under the head of the goose on Steampunk island to find this prestigious fish! 
