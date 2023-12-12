@@ -220,6 +220,228 @@ kill 12771
 
 ## Objective: Reportinator
 
+I decided to take the easy way out and brute force this one. To brute force this, I utilized BurpSuite's proxy module to help capture a submission attempt. This helped me realize that for each of the 9 findings, they were simply included in the HTTP POST as input1 through input9. A valid finding was set to and a hallucination was set to 1.  
+
+
+
+I then utilized my good friend, ChatGPT, to quickly script up a bash script to automate brute forcing against the application. After a lot of debugging and trial and error, the below script ultimately worked. 
+
+```bash
+#!/bin/bash
+
+url="http://hhc23-reportinator-dot-holidayhack2023.ue.r.appspot.com/check"
+
+# Set the cookies
+cookies="ReportinatorCookieYum=eyJ1c2VyaWQiOiI3NjhmOTNkNi0xNDc3LTQ0ZTYtOWZhMC0yMzg1NjM4OTk3YTYifQ.ZXcm6g.QnBaeGlhHzGVdw5Aw4ZETgqQzU8"
+
+for a in 0 1; do
+  for b in 0 1; do
+    for c in 0 1; do
+      for d in 0 1; do
+        for e in 0 1; do
+          for f in 0 1; do
+            for g in 0 1; do
+              for h in 0 1; do
+                for i in 0 1; do
+                  response_code=$(curl -s -w "%{http_code}" -o /dev/null -X POST -H "Host: hhc23-reportinator-dot-holidayhack2023.ue.r.appspot.com" \
+                                          -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0" \
+                                          -H "Accept: */*" \
+                                          -H "Accept-Language: en-US,en;q=0.5" \
+                                          -H "Accept-Encoding: gzip, deflate, br" \
+                                          -H "Referer: http://hhc23-reportinator-dot-holidayhack2023.ue.r.appspot.com/?&challenge=reportinator&" \
+                                          -H "Content-Type: application/x-www-form-urlencoded" \
+                                          -H "Content-Length: 89" \
+                                          -H "Origin: http://hhc23-reportinator-dot-holidayhack2023.ue.r.appspot.com" \
+                                          -H "Connection: close" \
+                                          -H "Cookie: $cookies" \
+                                          -d "input-1=$a&input-2=$b&input-3=$c&input-4=$d&input-5=$e&input-6=$f&input-7=$g&input-8=$h&input-9=$i" \
+                                          $url)
+
+                  echo "Attempt for a=$a b=$b c=$c d=$d e=$e f=$f g=$g h=$h i=$i - Response code: $response_code"
+
+                  if [ "$response_code" -eq 200 ]; then
+                    echo "Success for a=$a b=$b c=$c d=$d e=$e f=$f g=$g h=$h i=$i"
+                    exit 0  # You can exit the script if a successful response is received
+                  else
+                    echo "Retry for a=$a b=$b c=$c d=$d e=$e f=$f g=$g h=$h i=$i"
+                  fi
+                done
+              done
+            done
+          done
+        done
+      done
+    done
+  done
+done
+
+echo "No successful combination found."
+exit 1
+
+```
+
+Script output:
+
+```bash
+┌──(kali㉿kali)-[~/Desktop]
+└─$ ./brute\ \(copy\ 1\).sh 
+Attempt for a=0 b=0 c=0 d=0 e=0 f=0 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=0 g=0 h=0 i=0
+Attempt for a=0 b=0 c=0 d=0 e=0 f=0 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=0 g=0 h=0 i=1
+Attempt for a=0 b=0 c=0 d=0 e=0 f=0 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=0 g=0 h=1 i=0
+Attempt for a=0 b=0 c=0 d=0 e=0 f=0 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=0 g=0 h=1 i=1
+Attempt for a=0 b=0 c=0 d=0 e=0 f=0 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=0 g=1 h=0 i=0
+Attempt for a=0 b=0 c=0 d=0 e=0 f=0 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=0 g=1 h=0 i=1
+Attempt for a=0 b=0 c=0 d=0 e=0 f=0 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=0 g=1 h=1 i=0
+Attempt for a=0 b=0 c=0 d=0 e=0 f=0 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=0 g=1 h=1 i=1
+Attempt for a=0 b=0 c=0 d=0 e=0 f=1 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=1 g=0 h=0 i=0
+Attempt for a=0 b=0 c=0 d=0 e=0 f=1 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=1 g=0 h=0 i=1
+Attempt for a=0 b=0 c=0 d=0 e=0 f=1 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=1 g=0 h=1 i=0
+Attempt for a=0 b=0 c=0 d=0 e=0 f=1 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=1 g=0 h=1 i=1
+Attempt for a=0 b=0 c=0 d=0 e=0 f=1 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=1 g=1 h=0 i=0
+Attempt for a=0 b=0 c=0 d=0 e=0 f=1 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=1 g=1 h=0 i=1
+Attempt for a=0 b=0 c=0 d=0 e=0 f=1 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=1 g=1 h=1 i=0
+Attempt for a=0 b=0 c=0 d=0 e=0 f=1 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=0 f=1 g=1 h=1 i=1
+Attempt for a=0 b=0 c=0 d=0 e=1 f=0 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=0 g=0 h=0 i=0
+Attempt for a=0 b=0 c=0 d=0 e=1 f=0 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=0 g=0 h=0 i=1
+Attempt for a=0 b=0 c=0 d=0 e=1 f=0 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=0 g=0 h=1 i=0
+Attempt for a=0 b=0 c=0 d=0 e=1 f=0 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=0 g=0 h=1 i=1
+Attempt for a=0 b=0 c=0 d=0 e=1 f=0 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=0 g=1 h=0 i=0
+Attempt for a=0 b=0 c=0 d=0 e=1 f=0 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=0 g=1 h=0 i=1
+Attempt for a=0 b=0 c=0 d=0 e=1 f=0 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=0 g=1 h=1 i=0
+Attempt for a=0 b=0 c=0 d=0 e=1 f=0 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=0 g=1 h=1 i=1
+Attempt for a=0 b=0 c=0 d=0 e=1 f=1 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=1 g=0 h=0 i=0
+Attempt for a=0 b=0 c=0 d=0 e=1 f=1 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=1 g=0 h=0 i=1
+Attempt for a=0 b=0 c=0 d=0 e=1 f=1 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=1 g=0 h=1 i=0
+Attempt for a=0 b=0 c=0 d=0 e=1 f=1 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=1 g=0 h=1 i=1
+Attempt for a=0 b=0 c=0 d=0 e=1 f=1 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=1 g=1 h=0 i=0
+Attempt for a=0 b=0 c=0 d=0 e=1 f=1 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=1 g=1 h=0 i=1
+Attempt for a=0 b=0 c=0 d=0 e=1 f=1 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=1 g=1 h=1 i=0
+Attempt for a=0 b=0 c=0 d=0 e=1 f=1 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=0 e=1 f=1 g=1 h=1 i=1
+Attempt for a=0 b=0 c=0 d=1 e=0 f=0 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=0 g=0 h=0 i=0
+Attempt for a=0 b=0 c=0 d=1 e=0 f=0 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=0 g=0 h=0 i=1
+Attempt for a=0 b=0 c=0 d=1 e=0 f=0 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=0 g=0 h=1 i=0
+Attempt for a=0 b=0 c=0 d=1 e=0 f=0 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=0 g=0 h=1 i=1
+Attempt for a=0 b=0 c=0 d=1 e=0 f=0 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=0 g=1 h=0 i=0
+Attempt for a=0 b=0 c=0 d=1 e=0 f=0 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=0 g=1 h=0 i=1
+Attempt for a=0 b=0 c=0 d=1 e=0 f=0 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=0 g=1 h=1 i=0
+Attempt for a=0 b=0 c=0 d=1 e=0 f=0 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=0 g=1 h=1 i=1
+Attempt for a=0 b=0 c=0 d=1 e=0 f=1 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=1 g=0 h=0 i=0
+Attempt for a=0 b=0 c=0 d=1 e=0 f=1 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=1 g=0 h=0 i=1
+Attempt for a=0 b=0 c=0 d=1 e=0 f=1 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=1 g=0 h=1 i=0
+Attempt for a=0 b=0 c=0 d=1 e=0 f=1 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=1 g=0 h=1 i=1
+Attempt for a=0 b=0 c=0 d=1 e=0 f=1 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=1 g=1 h=0 i=0
+Attempt for a=0 b=0 c=0 d=1 e=0 f=1 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=1 g=1 h=0 i=1
+Attempt for a=0 b=0 c=0 d=1 e=0 f=1 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=1 g=1 h=1 i=0
+Attempt for a=0 b=0 c=0 d=1 e=0 f=1 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=0 f=1 g=1 h=1 i=1
+Attempt for a=0 b=0 c=0 d=1 e=1 f=0 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=0 g=0 h=0 i=0
+Attempt for a=0 b=0 c=0 d=1 e=1 f=0 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=0 g=0 h=0 i=1
+Attempt for a=0 b=0 c=0 d=1 e=1 f=0 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=0 g=0 h=1 i=0
+Attempt for a=0 b=0 c=0 d=1 e=1 f=0 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=0 g=0 h=1 i=1
+Attempt for a=0 b=0 c=0 d=1 e=1 f=0 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=0 g=1 h=0 i=0
+Attempt for a=0 b=0 c=0 d=1 e=1 f=0 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=0 g=1 h=0 i=1
+Attempt for a=0 b=0 c=0 d=1 e=1 f=0 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=0 g=1 h=1 i=0
+Attempt for a=0 b=0 c=0 d=1 e=1 f=0 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=0 g=1 h=1 i=1
+Attempt for a=0 b=0 c=0 d=1 e=1 f=1 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=1 g=0 h=0 i=0
+Attempt for a=0 b=0 c=0 d=1 e=1 f=1 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=1 g=0 h=0 i=1
+Attempt for a=0 b=0 c=0 d=1 e=1 f=1 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=1 g=0 h=1 i=0
+Attempt for a=0 b=0 c=0 d=1 e=1 f=1 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=1 g=0 h=1 i=1
+Attempt for a=0 b=0 c=0 d=1 e=1 f=1 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=1 g=1 h=0 i=0
+Attempt for a=0 b=0 c=0 d=1 e=1 f=1 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=1 g=1 h=0 i=1
+Attempt for a=0 b=0 c=0 d=1 e=1 f=1 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=1 g=1 h=1 i=0
+Attempt for a=0 b=0 c=0 d=1 e=1 f=1 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=0 d=1 e=1 f=1 g=1 h=1 i=1
+Attempt for a=0 b=0 c=1 d=0 e=0 f=0 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=0 g=0 h=0 i=0
+Attempt for a=0 b=0 c=1 d=0 e=0 f=0 g=0 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=0 g=0 h=0 i=1
+Attempt for a=0 b=0 c=1 d=0 e=0 f=0 g=0 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=0 g=0 h=1 i=0
+Attempt for a=0 b=0 c=1 d=0 e=0 f=0 g=0 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=0 g=0 h=1 i=1
+Attempt for a=0 b=0 c=1 d=0 e=0 f=0 g=1 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=0 g=1 h=0 i=0
+Attempt for a=0 b=0 c=1 d=0 e=0 f=0 g=1 h=0 i=1 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=0 g=1 h=0 i=1
+Attempt for a=0 b=0 c=1 d=0 e=0 f=0 g=1 h=1 i=0 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=0 g=1 h=1 i=0
+Attempt for a=0 b=0 c=1 d=0 e=0 f=0 g=1 h=1 i=1 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=0 g=1 h=1 i=1
+Attempt for a=0 b=0 c=1 d=0 e=0 f=1 g=0 h=0 i=0 - Response code: 400
+Retry for a=0 b=0 c=1 d=0 e=0 f=1 g=0 h=0 i=0
+Attempt for a=0 b=0 c=1 d=0 e=0 f=1 g=0 h=0 i=1 - Response code: 200
+Success for a=0 b=0 c=1 d=0 e=0 f=1 g=0 h=0 i=1
+
+```
+
+After finding my successful combination, I re-launched the game and submitted a report with findings 3, 6, and 9 marked as hallucinations. 
+
+GLORY!
+
+
+
 ---
 
 ## Objective: Azure 101
