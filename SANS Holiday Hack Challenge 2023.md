@@ -712,6 +712,12 @@ Gingerbread
 
 into your badge for GLORY!
 
+---
+
+## Objective: Active Directory
+
+
+
 
 
 ---
