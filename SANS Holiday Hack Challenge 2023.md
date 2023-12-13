@@ -1996,6 +1996,10 @@ And he'll silently take his way.
 
 We know that Wombley Cube is who needs to say this into the speaker for the door to open. Luckily when we visited Film Noir Island: Chiaroscuro City, we met Wombley and he gave us an audiobook of us! I wonder if we can leverage some AI technology to copy his voice and make it say our passphrase...
 
-A quick google of free services and play.ht looks like a free option. I used temp-mail to create a free throwaway account. I uploaded the audio book to "Voice Cloning" and then used the clone to generate a .wav file speaking the sentence above. I uploaded the audio file to the door and boom! It opened. 
+A quick google of free services and play.ht looks like a free option. I used temp-mail to create a free throwaway account. I uploaded the audio book to "Voice Cloning" and then used the clone to generate a .wav file speaking the sentence above. 
+
+https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023/assets/139015523/b94390a5-13f3-49c5-ab5c-bcfb7bc2a54e
+
+I uploaded the audio file to the door and boom! It opened. 
 
 ![](/docs/assets/images/spacedoor.png)
