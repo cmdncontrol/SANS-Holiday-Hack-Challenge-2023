@@ -921,7 +921,7 @@ Output
 smbclient.py wombleycube@10.0.0.53 -hashes aad3b435b51404eeaad3b435b51404ee:5740373231597863662f6d50484d3e23
 ```
 
-Hmm.. not what I am looking for for this objective, but may be useful later. 
+Hmm.. this looks suspicious, let's save the contents for later.
 
 ```
 # shares
@@ -952,7 +952,13 @@ And he'll silently take his way.
 
 ```
 
+Enter
 
+```
+InstructionsForEnteringSatelliteGroundStation.txt
+```
+
+into your badge to achieve GLORY!
 
 ---
 
