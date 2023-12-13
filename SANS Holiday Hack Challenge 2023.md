@@ -2033,7 +2033,7 @@ AllowedIPs = 10.1.1.1/32
 
 ```
 
-After installing Wireguard and configuring my tunnel using [Quick Start - WireGuard](https://www.wireguard.com/quickstart/#side-by-side-video), I finally realized I needed to talk to the vending machine for more files. This included a README.md file.
+After installing Wireguard and configuring my tunnel using [Quick Start - WireGuard](https://www.wireguard.com/quickstart/#side-by-side-video), I finally realized I needed to talk to the vending machine for more files and tore down my local wireguard configuration. This download from the vending machine included a README.md file.
 
 ```
 └─# cat README.md     
