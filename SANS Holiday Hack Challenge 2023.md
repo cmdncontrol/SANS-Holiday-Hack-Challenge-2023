@@ -941,14 +941,8 @@ drw-rw-rw-          0  Tue Dec 12 02:14:05 2023 ..
 -rw-rw-rw-      54096  Tue Dec 12 02:14:08 2023 SignatureCookies.pdf
 drw-rw-rw-          0  Tue Dec 12 02:14:08 2023 super_secret_research
 -rw-rw-rw-        165  Tue Dec 12 02:14:08 2023 todo.txt
-# cat InstructionsForEnteringSatelliteGroundStation.txt
-Note to self:
 
-To enter the Satellite Ground Station (SGS), say the following into the speaker:
 
-And he whispered, 'Now I shall be out of sight;
-So through the valley and over the height.'
-And he'll silently take his way.
 
 ```
 
@@ -1980,3 +1974,28 @@ We now know we need to fish right under the head of the goose on Steampunk islan
  }, 5000); // Adjust the delay as needed }, 5000); // Repeat every 60 seconds
 
 ---
+
+## Objective: Space Island Door Access Speaker
+
+You need to solve the Certificate SSHenanigans and Active Directory objectives before this as they provide key pieces. 
+
+
+
+In the Active Directory challenge we learned what we need to say into the speaker.
+
+```
+# cat InstructionsForEnteringSatelliteGroundStation.txt
+Note to self:
+
+To enter the Satellite Ground Station (SGS), say the following into the speaker:
+
+And he whispered, 'Now I shall be out of sight;
+So through the valley and over the height.'
+And he'll silently take his way.
+```
+
+We know that Wombley Cube is who needs to say this into the speaker for the door to open. Luckily when we visited Film Noir Island: Chiaroscuro City, we met Wombley and he gave us an audiobook of us! I wonder if we can leverage some AI technology to copy his voice and make it say our passphrase...
+
+A quick google of free services and play.ht looks like a free option. I used temp-mail to create a free throwaway account. I uploaded the audio book to "Voice Cloning" and then used the clone to generate a .wav file speaking the sentence above. I uploaded the audio file to the door and boom! It opened. 
+
+![](/docs/assets/images/spacedoor.png)
