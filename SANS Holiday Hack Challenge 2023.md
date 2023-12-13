@@ -1990,3 +1990,163 @@ https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023/assets/139015523
 I uploaded the audio file to the door and boom! It opened. 
 
 ![](/docs/assets/images/spacedoor.png)
+
+---
+
+## Objective: Camera Access
+
+```
+
+###BEGIN###
+### This is the server's Wireguard configuration file. Please consider saving it for your record. ###
+
+[Interface]
+Address = 10.1.1.1/24
+PrivateKey = 0tYtIabIUQbxO0GCGGWv6yqd2w58BURVt7/Ut2MHExE=
+ListenPort = 51820
+
+[Peer]
+PublicKey = us0lVxJBEo1Zvq1nLXE9RperRNFA59aRpxY/HqPxGDk=
+AllowedIPs = 10.1.1.2/32
+
+
+###END####
+
+###BEGIN###
+### This is your Wireguard configuration file. Please save it, configure a local Wireguard client, and connect to the Target. ###
+
+[Interface]
+Address = 10.1.1.2/24
+PrivateKey = RY9F4SNMuFsLw2/WjpmHisG90dHR391KLM7mRu4xW6I=
+ListenPort = 51820
+
+[Peer]
+PublicKey = hEd/ORLAqMw3Pgk/QNw2DJVho5R3/A17Jg6M9D4AuSI=
+Endpoint = 35.226.147.186:51820
+AllowedIPs = 10.1.1.1/32
+
+
+AllowedIPs = 10.1.1.1/32
+
+
+###END####
+
+```
+
+After installing Wireguard and configuring my tunnel using [Quick Start - WireGuard](https://www.wireguard.com/quickstart/#side-by-side-video), I finally realized I needed to talk to the vending machine for more files. This included a README.md file.
+
+```
+└─# cat README.md     
+# North Pole VNC Workspace Container:
+
+Install docker and then to build the image do:
+
+```
+docker build -t nmf_client .
+```
+
+Then to run it use:
+
+```
+docker run -it --cap-add=NET_ADMIN -p 5900:5900 -p 6901:6901 --rm nmf_client
+```
+
+Can combine them both together using:
+
+``` bash
+./build_and_run.sh
+```
+
+This will open a port on 5900 for you to connect to. On ubuntu you can connect with something like Vinagre. Fedora, vnc viewer.
+
+On Windows you could connect with something like tightvnc:
+
+https://www.tightvnc.com/download.php
+
+If ran locally, you could connect using `localhost:5900`.
+
+## Wireguard How To:
+
+Wireguard is already installed in this container during build but you can install it manually elsewhere too:
+
+```
+apt update && apt install -y wireguard-tools
+```
+
+There is many ways to connect wireguard but often times its just 1 to 1 connection. 
+
+In this case, a client config would look something like this:
+
+```
+[Interface]
+Address = 10.1.1.2/24
+PrivateKey = hTCxVDQRxSd5OwGc4TPffcNgmP488+K6j5nn6NloONo=
+ListenPort = 51820
+
+[Peer]
+PublicKey = 2k45++7JvVLLXwZufPeV8LmzK6IpivWDGdCVi2yhsxI=
+Endpoint = 34.172.176.5:51820
+AllowedIPs = 10.1.1.1/32
+```
+
+Save the config to the following file `/etc/wireguard/wg0.conf` using a command like this:
+
+``` bash
+# Copy/Paste works best with gedit in this vnc container
+gedit /etc/wireguard/wg0.conf
+# OR
+nano /etc/wireguard/wg0.conf
+# OR
+vim /etc/wireguard/wg0.conf
+```
+
+Then we need to take down the interface and bring it back up:
+
+``` bash
+# Bring down
+wg-quick down wg0
+# Bring up
+wg-quick up wg0
+```
+
+## Nanosat MO Framework:
+
+Documentation on the Nanosat framework can be found at:
+
+https://nanosat-mo-framework.readthedocs.io/en/latest/opssat/testing.html
+
+Can connect to a server using:
+
+```
+maltcp://10.1.1.1:1024/nanosat-mo-supervisor-Directory
+```
+```
+
+I then ran:
+
+```bash
+# install docker on kali
+sudo apt get install docker.io
+# build the docker image
+docker build -t nmf_client .
+# run the docker image 
+docker run -it --cap-add=NET_ADMIN -p 5900:5900 -p 6901:6901 --rm nmf_client
+# connect via tightvnc 
+xtightvncviewer -x11cursor 
+# in pop up box enter
+localhost:5900
+# this should bring up a satelite image in a VNC session
+# created wg0.conf file locally on my kali vm 
+# obtain docker ID
+docker ps
+# copy over to docker container
+docker cp /home/kali/Downloads/CameraAccess/wg0.conf 75d876970e1e:/etc/wireguard
+# create wg0 interface
+ip link add dev wg0 type wireguard
+# bring down and up the interface
+# Bring down
+wg-quick down wg0
+# Bring up
+wg-quick up wg0
+
+```
