@@ -2169,4 +2169,16 @@ I went back to the YouTube video and remembered that not everything in encrypted
 
 I launched Wireshark and began to listen on the wg0 interface. I submitted another action for a "Base64SnapImage" and waited... over 4000 packets were generated. When following the TCP stream I could clearly see the Base64 image start, it took Wireshark a bit to display all the data. I saved this data off to a text file called image.txt. I opened this is LibreOffice and edited the contents to solely contain the base64 text and saved it as encodedimage.txt. I leveraged Cyberchef and uploaded the file before used the "Decode Base64" function, I saved the output as "download.jpg" and I had the image!! 
 
-![]()
+![](/docs/assets/images/camera.png)
+
+![](/docs/assets/images/camera1.png)
+
+Plug the below into your badge for GLORY!
+
+```
+CONQUER HOLIDAY SEASON!
+```
+
+---
+
+## Objective: Diversion
