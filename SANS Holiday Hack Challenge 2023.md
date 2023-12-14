@@ -2233,4 +2233,66 @@ apt-get install default-jdk
 
 
 
- 
+ Thanks @Gui2315 :), could not have done this without you.
+
+
+
+---
+
+## Objective: Captain Comms
+
+**Goal: Get to GeeseIslandsCuperChiefCommunicationsOfficer role**
+
+
+
+Captain's ChatNPT Initial To-Do List 
+
+```
+Private key moved to a folder he hopes no one will find...
+
+He created a 'keys' folder in the same directory the 'roleMonitor' token is in
+
+The public key is in "capsPubKey.key" in that directory
+```
+
+Just Watch This (JWT): Owner's Card
+
+```
+During installation of the JWT radio system, the rMonitor.tok file
+containing the 'radioMonitor' role token was created in the /jwtDefault
+directory...
+
+The proper use of this AUTHORIZATION token will allow viewing of received
+signals in the waterfall display. However, to decode any digital signals
+received, you will need the 'radioDecoder' role token. Look at the 
+JWT Appendix A - Decoder Index to learn more about decoding signals.
+
+To use the transmitter functionality, the special AUTHORIZATION token for
+administrators created during install is required.
+```
+
+JWT Appendix A - Decoder Index
+
+```
+Many transmissions the JWT SDR can receive, some will just sound like
+'beeps', 'boops', and 'squawks' which can only be decoded using the plugins
+included with the JWT SDR system.
+
+The JWT SDR sustems comes with a 'CW' (morse code decoder) and a RadioFax 
+decoder. The 'CW' decoder will tirn the audible dots and dashes of MorseCode
+into understandable text.
+
+Among the JWT SDR stations you may find a 'numbers' station. ChatNPT says
+a numbers station is a type of shortwave radio station characterized by
+broadcasts of formatted numbers, which are believed to be coded messages.
+The broadcasts typically feature a series of spoken numbers, sometimes
+preceeded by a piece of music or a specific set of tones, known as 
+'interval signals'. One such infamous numbers station that operated until
+2008 is the 'Lincolnshire Poacher' which used this format:
+'Music-(5-digits)-(6 Chimes)-(5-Digit Number Groups)-(6 Chimes)-Music'
+
+More info can be found at: www.numbers-stations.com/english/e03-the-lincolnshire-poacher/
+
+With the SDR window open, simply click on a signal peak while using the 
+'radioDecoder' ROLE token inorder to hear and decode a signal...
+```
