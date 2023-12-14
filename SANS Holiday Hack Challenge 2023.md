@@ -2464,3 +2464,30 @@ Decoded JWT
     "role": "radioDecoder"
 }
 ```
+
+Now we can assume the "radioDecoder" role by updating our "justWatchThisRole" cookie in our browser. Once we have that role, we can begin to utilize the console in the middle of the room to decode messages. 
+
+Message 1: CW Decoder
+
+```
+... CQ CQ CQ DE KH644 -- SILLY CAPTAIN! WE FOUND HIS FANCY RADIO PRIVATE
+KEY IN A FOLDER CALLED TH3CAPSPR1V4T3F0LD3R ...
+```
+
+Message 2: Audio-Text Decoder
+
+```
+(music) (music) (music) 88323 88323 88323 (gong) (gong) (gong) (gong)
+(gong) (gong) 12249 12249 16009 16009 12249 12249 16009 16009 (gong) (gong) 
+(gong) (gong) (gong) (gong) (music) (music) (music)
+```
+
+Message 3: RadioFax Decoder
+
+![](/docs/assets/images/comms1.png)
+
+In the image we can see -- Freq: 10426Hz, let's keep this in mind
+
+
+
+Let's focus on "Message 1: CW Decoder" for now. Let's see if we can capture the captains Private Key.
