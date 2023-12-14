@@ -2182,3 +2182,55 @@ CONQUER HOLIDAY SEASON!
 ---
 
 ## Objective: Diversion
+
+```bash
+# update app repositories
+sudo apt-get update
+# ensure wireguard is working
+sudo apt-get install inetutils-ping 
+```
+
+```
+Connection connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/missile_targeting_system", "targeter", "cu3xmzp9tzpi00bdqvxq");
+
+```
+
+Well let's install mysql since it looks like we have some creds for a mariadb
+
+```bash
+# install mysql client
+apt install mysql-client
+y
+```
+
+Let's connect and poke around the database
+
+```bash
+mysql -h 10.1.1.1 -u targeter -p
+Enter password: cu3xmzp9tzpi00bdqvxq
+
+
+show databases;
+use missile_targeting_system;
+show tables;
+select * from messaging;
+# columns: id | msg_type msg_data
+select * from pointing_mode;
+# columns: id | numerical_mode
+select * from pointing_mode_to_str;
+# columns: id | numerical_mode | str_mode | str_desc
+select * from target_coordinates
+# columns: id | lat | lng
+```
+
+
+
+```bash
+# install java common
+apt-get install java-common
+apt-get install default-jdk
+```
+
+
+
+ 
