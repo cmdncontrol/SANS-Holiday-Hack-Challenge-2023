@@ -2454,3 +2454,13 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJISEMgMjAyMyBDYXB0YWluJ3MgQ29tbXM
 ```
 
 Decoded JWT
+
+```
+{
+    "iss": "HHC 2023 Captain's Comms",
+    "iat": 1699485795.3403327,
+    "exp": 1809937395.3403327,
+    "aud": "Holiday Hack 2023",
+    "role": "radioDecoder"
+}
+```
