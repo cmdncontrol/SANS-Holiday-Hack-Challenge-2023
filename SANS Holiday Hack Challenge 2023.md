@@ -595,7 +595,7 @@ result="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1
 Web Apps - Get Source Control ([Web Apps - Get Source Control - REST API (Azure App Service) | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/appservice/web-apps/get-source-control?view=rest-appservice-2022-03-01))
 
 ```bash
-monitor@ssh-server-vm:~$ curl -X GET   "https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web?api-version=2022-03-01" -H "Authorization: Bearer $result"Output reformatted to JSON
+curl -X GET   "https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web?api-version=2022-03-01" -H "Authorization: Bearer $result"Output reformatted to JSON
 ```
 
 Output reformatted to JSON
@@ -661,7 +661,7 @@ monitor@ssh-server-vm:/etc/ssh/auth_principals$
 Create keys for the admin principal
 
 ```bash
-
+ ssh-keygen -t rsa -C "admin@ssh-server-vm.santaworkshopgeeseislands.org"
 ```
 
 After looking at Github code, it appears if you specify the principal it will use that principal value, otherwise it defaults to the OS environment variable DEFAULT_PRINCIPAL which must be elf. Create certificate for admin via CURL and specify the principal 
@@ -1995,8 +1995,9 @@ I uploaded the audio file to the door and boom! It opened.
 
 ## Objective: Camera Access
 
-```
+Generate your wireguard configuration by clicking on the console in the middle of the room. Click the alligator in the bottom right and then click "Time Travel"
 
+```
 ###BEGIN###
 ### This is the server's Wireguard configuration file. Please consider saving it for your record. ###
 
@@ -2030,13 +2031,11 @@ AllowedIPs = 10.1.1.1/32
 
 
 ###END####
-
 ```
 
 After installing Wireguard and configuring my tunnel using [Quick Start - WireGuard](https://www.wireguard.com/quickstart/#side-by-side-video), I finally realized I needed to talk to the vending machine for more files and tore down my local wireguard configuration. This download from the vending machine included a README.md file.
 
 ```
-└─# cat README.md     
 # North Pole VNC Workspace Container:
 
 Install docker and then to build the image do:
@@ -2120,8 +2119,10 @@ Can connect to a server using:
 ```
 maltcp://10.1.1.1:1024/nanosat-mo-supervisor-Directory
 ```
+
 ```
 
+```
 I then ran:
 
 ```bash
@@ -2148,5 +2149,24 @@ ip link add dev wg0 type wireguard
 wg-quick down wg0
 # Bring up
 wg-quick up wg0
+```
+
+Next, let's launch the CTT: Consumer Test Tool in the VNC session. We know our initial Directory Service URI from the README.md file. 
 
 ```
+maltcp://10.1.1.1:1024/nanosat-mo-supervisor-Directory
+```
+
+Once we fetch that information, we notice a service name called "camera". This peaked my interest given the objective name. I selected it and clicked "Connect to Selected Provider". On the new tab, under "Apps Launcher service" I see the camera app, I selected the checkbox for running and it started! In the log output below it generated a new maltcp address.
+
+```
+maltcp://10.1.1.1:1025/camera-Directory
+```
+
+After fetching information on this URI, I connected to this provider as well. In the new camera tab I poked around a bit. In the "Action Service" tab I tried to take a picture, but was a getting a feedback. Under the "Parameter service" tab, I checked the box for "genrationEnabled". I then went back to the "Action service" and tried to submit actions for more pictures without success...
+
+I went back to the YouTube video and remembered that not everything in encrypted...
+
+I launched Wireshark and began to listen on the wg0 interface. I submitted another action for a "Base64SnapImage" and waited... over 4000 packets were generated. When following the TCP stream I could clearly see the Base64 image start, it took Wireshark a bit to display all the data. I saved this data off to a text file called image.txt. I opened this is LibreOffice and edited the contents to solely contain the base64 text and saved it as encodedimage.txt. I leveraged Cyberchef and uploaded the file before used the "Decode Base64" function, I saved the output as "download.jpg" and I had the image!! 
+
+![]()
