@@ -2039,17 +2039,17 @@ After installing Wireguard and configuring my tunnel using [Quick Start - WireGu
 # North Pole VNC Workspace Container:
 
 Install docker and then to build the image do:
-
 ```
+
 docker build -t nmf_client .
-```
 
+```
 Then to run it use:
-
 ```
+
 docker run -it --cap-add=NET_ADMIN -p 5900:5900 -p 6901:6901 --rm nmf_client
-```
 
+```
 Can combine them both together using:
 
 ``` bash
@@ -2090,7 +2090,7 @@ AllowedIPs = 10.1.1.1/32
 
 Save the config to the following file `/etc/wireguard/wg0.conf` using a command like this:
 
-``` bash
+```bash
 # Copy/Paste works best with gedit in this vnc container
 gedit /etc/wireguard/wg0.conf
 # OR
@@ -2101,7 +2101,7 @@ vim /etc/wireguard/wg0.conf
 
 Then we need to take down the interface and bring it back up:
 
-``` bash
+```bash
 # Bring down
 wg-quick down wg0
 # Bring up
@@ -2123,6 +2123,7 @@ maltcp://10.1.1.1:1024/nanosat-mo-supervisor-Directory
 ```
 
 ```
+
 I then ran:
 
 ```bash
@@ -2192,7 +2193,6 @@ sudo apt-get install inetutils-ping
 
 ```
 Connection connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/missile_targeting_system", "targeter", "cu3xmzp9tzpi00bdqvxq");
-
 ```
 
 Well let's install mysql since it looks like we have some creds for a mariadb
@@ -2223,27 +2223,19 @@ select * from target_coordinates
 # columns: id | lat | lng
 ```
 
-
-
 ```bash
 # install java common
 apt-get install java-common
 apt-get install default-jdk
 ```
 
-
-
  Thanks @Gui2315 :), could not have done this without you.
-
-
 
 ---
 
 ## Objective: Captain Comms
 
 **Goal: Get to GeeseIslandsCuperChiefCommunicationsOfficer role**
-
-
 
 Captain's ChatNPT Initial To-Do List 
 
@@ -2318,7 +2310,6 @@ Sec-Fetch-Dest: empty
 Sec-Fetch-Mode: cors
 Sec-Fetch-Site: same-origin
 Te: trailers
-
 ```
 
 Response
@@ -2358,27 +2349,25 @@ Decoded JWT
 }
 ```
 
-Now let's update our "justWatchThisRole" cookie with our new value. We know from our notes above that the captain created a /keys folder and his public key is stored in "capsPubKey.key". Let's give it a shot and see if we have access.
+Now let's update our "Authorization Bearer" header with our new value. We know from our notes above that the captain created a /keys folder and his public key is stored in "capsPubKey.key". Let's give it a shot and see if we have access.
 
 New Request
 
 ```
 GET /jwtDefault/keys/capsPubKey.key HTTP/2
 Host: captainscomms.com
-Cookie: justWatchThisRole=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJISEMgMjAyMyBDYXB0YWluJ3MgQ29tbXMiLCJpYXQiOjE2OTk0ODU3OTUuMzQwMzMyNywiZXhwIjoxODA5OTM3Mzk1LjM0MDMzMjcsImF1ZCI6IkhvbGlkYXkgSGFjayAyMDIzIiwicm9sZSI6InJhZGlvTW9uaXRvciJ9.f_z24CMLim2JDKf8KP_PsJmMg3l_V9OzEwK1E_IBE9rrIGRVBZjqGpvTqAQQSesJD82LhK2h8dCcvUcF7awiAPpgZpcfM5jdkXR7DAKzaHAV0OwTRS6x_Uuo6tqGMu4XZVjGzTvba-eMGTHXyfekvtZr8uLLhvNxoarCrDLiwZ_cKLViRojGuRIhGAQCpumw6NTyLuUYovy_iymNfe7pqsXQNL_iyoUwWxfWcfwch7eGmf2mBrdEiTB6LZJ1ar0FONfrLGX19TV25Qy8auNWQIn6jczWM9WcZbuOIfOvlvKhyVWbPdAK3zB7OOm-DbWm1aFNYKr6JIRDLobPfiqhKg; CaptainsCookie=eyJjYXB0YWluc1ZpY3RvcnkiOjAsInVzZXJpZCI6IjI0NjExY2I5LTZkNjItNDg5MS1iOTkzLTIyNzZiZDE2YzVkZCJ9.ZXs29A.NpdDZXueG5YZHem9tKsa-WxgR7I
+Cookie: justWatchThisRole=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJISEMgMjAyMyBDYXB0YWluJ3MgQ29tbXMiLCJpYXQiOjE2OTk0ODU3OTUuMzQwMzMyNywiZXhwIjoxODA5OTM3Mzk1LjM0MDMzMjcsImF1ZCI6IkhvbGlkYXkgSGFjayAyMDIzIiwicm9sZSI6InJhZGlvVXNlciJ9.BGxJLMZw-FHI9NRl1xt_f25EEnFcAYYu173iqf-6dgoa_X3V7SAe8scBbARyusKq2kEbL2VJ3T6e7rAVxy5Eflr2XFMM5M-Wk6Hqq1lPvkYPfL5aaJaOar3YFZNhe_0xXQ__k__oSKN1yjxZJ1WvbGuJ0noHMm_qhSXomv4_9fuqBUg1t1PmYlRFN3fNIXh3K6JEi5CvNmDWwYUqhStwQ29SM5zaeLHJzmQ1Ey0T1GG-CsQo9XnjIgXtf9x6dAC00LYXe1AMly4xJM9DfcZY_KjfP-viyI7WYL0IJ_UOtIMMN0u-XO8Q_F3VO0NyRIhZPfmALOM2Liyqn6qYTjLnkg; CaptainsCookie=eyJjYXB0YWluc1ZpY3RvcnkiOjAsInVzZXJpZCI6IjI0NjExY2I5LTZkNjItNDg5MS1iOTkzLTIyNzZiZDE2YzVkZCJ9.ZXs29A.NpdDZXueG5YZHem9tKsa-WxgR7I
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate, br
 Referer: https://captainscomms.com/?&challenge=capcom&username=cmdncontrol&id=24611cb9-6d62-4891-b993-2276bd16c5dd&area=spi-brassbouyport&location=32,34&tokens=&dna=ATATATTAATATATATATATTAATATATATATCGTATAATATATATATATATATCGATATATATATATATCGATATATCGATATATATATATGCGCATATATATATATGCGCATATTACG
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJISEMgMjAyMyBDYXB0YWluJ3MgQ29tbXMiLCJpYXQiOjE2OTk0ODU3OTUuMzQwMzMyNywiZXhwIjoxODA5OTM3Mzk1LjM0MDMzMjcsImF1ZCI6IkhvbGlkYXkgSGFjayAyMDIzIiwicm9sZSI6InJhZGlvVXNlciJ9.BGxJLMZw-FHI9NRl1xt_f25EEnFcAYYu173iqf-6dgoa_X3V7SAe8scBbARyusKq2kEbL2VJ3T6e7rAVxy5Eflr2XFMM5M-Wk6Hqq1lPvkYPfL5aaJaOar3YFZNhe_0xXQ__k__oSKN1yjxZJ1WvbGuJ0noHMm_qhSXomv4_9fuqBUg1t1PmYlRFN3fNIXh3K6JEi5CvNmDWwYUqhStwQ29SM5zaeLHJzmQ1Ey0T1GG-CsQo9XnjIgXtf9x6dAC00LYXe1AMly4xJM9DfcZY_KjfP-viyI7WYL0IJ_UOtIMMN0u-XO8Q_F3VO0NyRIhZPfmALOM2Liyqn6qYTjLnkg
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJISEMgMjAyMyBDYXB0YWluJ3MgQ29tbXMiLCJpYXQiOjE2OTk0ODU3OTUuMzQwMzMyNywiZXhwIjoxODA5OTM3Mzk1LjM0MDMzMjcsImF1ZCI6IkhvbGlkYXkgSGFjayAyMDIzIiwicm9sZSI6InJhZGlvTW9uaXRvciJ9.f_z24CMLim2JDKf8KP_PsJmMg3l_V9OzEwK1E_IBE9rrIGRVBZjqGpvTqAQQSesJD82LhK2h8dCcvUcF7awiAPpgZpcfM5jdkXR7DAKzaHAV0OwTRS6x_Uuo6tqGMu4XZVjGzTvba-eMGTHXyfekvtZr8uLLhvNxoarCrDLiwZ_cKLViRojGuRIhGAQCpumw6NTyLuUYovy_iymNfe7pqsXQNL_iyoUwWxfWcfwch7eGmf2mBrdEiTB6LZJ1ar0FONfrLGX19TV25Qy8auNWQIn6jczWM9WcZbuOIfOvlvKhyVWbPdAK3zB7OOm-DbWm1aFNYKr6JIRDLobPfiqhKg
 X-Request-Item: tx
 Sec-Fetch-Dest: empty
 Sec-Fetch-Mode: cors
 Sec-Fetch-Site: same-origin
 Te: trailers
-
-
 ```
 
 Response
@@ -2404,7 +2393,6 @@ cx/lGVHFVxE1ptXP+asOAzK1wEezyDjyUxZcMMmV0VibzeXbxsXYvV3knScr2WYO
 qZ5ssa4Rah9sWnm0CKG638/lVD9kwbvcO2lMlUeTp7vwOTXEGyadpB0WsuIKuPH6
 uQIDAQAB
 -----END PUBLIC KEY-----
-
 ```
 
 Captains Public Key
