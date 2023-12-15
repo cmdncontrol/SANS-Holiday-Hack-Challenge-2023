@@ -1980,8 +1980,6 @@ Enter this in your badge for GLORY!
 !tom+elf!
 ```
 
-
-
 ---
 
 ## Objectives: BONUS: Fishing Guide & BONUS: Fishing Mastery
@@ -1998,7 +1996,45 @@ https://2023.holidayhackchallenge.com/sea/fishdensityref.html
 
 We receive what appears to be heat maps of where the fish are located on the island...but there appears to be A LOT of fish varieties out there. We need some way to streamline our fishing endeavor. 
 
-There's one fish that seems to have a very specific spot it can be caught in. The **Piscis Cyberneticus Skodo**, seems to be hyper located in one spot. After searching through the sea sourcecode some more it revealed.
+After a bit of digging in the developer tools and reviewing the calls for cast and reel, I was able to come up with the following script that will continually fish. As soon as a fish is on the line it will reel in and re-cast. 
+
+```javascript
+function sendMessage(message) {
+  if (true === true) {
+     {
+      socket.send(message);
+    }
+  }
+}
+
+// Function to perform the casting operation
+function castAndReel() {
+  function checkAndReel() {
+    // Send 'cast' initially
+    sendMessage('cast');
+
+    // Check for the presence of the button and send 'reel' if found
+    const reelitinButton = document.querySelector('.reelitin.gotone');
+    if (reelitinButton) {
+      sendMessage('reel');
+      
+      // After 'reel', pause for 1 second and then cast again
+      setTimeout(function() {
+        sendMessage('cast');
+      }, 1000);
+    }
+  }
+
+  // Set up an infinite loop checking for the button and sending 'reel' and 'cast'
+  setInterval(checkAndReel, 200); // Check every 200 milliseconds (5 times per second)
+}
+
+// Start the entire script as an infinite loop
+castAndReel();
+
+```
+
+I let this script run overnight and noticed I was still short 4 fish. After some digging on the heat maps, there's one fish that seems to have a very specific spot it can be caught in. The **Piscis Cyberneticus Skodo**, seems to be hyper located in one spot. After searching through the sea sourcecode some more it revealed.
 
 ```
 https://2023.holidayhackchallenge.com/sea/assets/minimap.png
@@ -2012,15 +2048,8 @@ After inverting the minimap colors, ensuring the same size images, and overlayin
 
 We now know we need to fish right under the head of the goose on Steampunk island to find this prestigious fish! 
 
-// Function to send a message through the socket function sendMessage(message) {
- if (true === true) {
- socket.send(message);
- }
-} // Infinite loop sending 'cast' and 'reel' messages setInterval(function() {
- sendMessage('cast');
- // Delay for a short time before sending 'reel' setTimeout(function() {
- sendMessage('reel');
- }, 5000); // Adjust the delay as needed }, 5000); // Repeat every 60 seconds
+
+After restarting the script once I got there, I was able to catch my remaining 4 fish in a matter of an hour. 
 
 ---
 
