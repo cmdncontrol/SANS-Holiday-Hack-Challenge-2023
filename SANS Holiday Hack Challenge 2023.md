@@ -1870,11 +1870,11 @@ When we try to play the game in the browser, we can see that are being blocked t
 
 To find the location that the iframe is pulling the game frame, view your network traffic when you load the game. After you do this a few times, you'll find there appears to be two different versions that can load. 
 
-game0.gb
+game0.gb - https://gamegosling.com/vol2-akHB27gg6pN0/rom/game0.gb
 
 ![](/docs/assets/images/gcv21.png)
 
-game1.gb
+game1.gb - https://gamegosling.com/vol2-akHB27gg6pN0/rom/game1.gb
 
 ![](/docs/assets/images/gcv22.png)
 
@@ -1921,6 +1921,66 @@ Decoded
 ```
 GL0RY
 ```
+
+---
+
+## Objective: Game Cartridges: Vol 3
+
+For this objective I used:
+
+- BeyondCompare to view the hex data of the game files
+
+- mGBA as my GameBoy emulator
+
+- Ghidra to view the functions (not needed)
+
+
+
+When we play the game through normally, we can collect coins and eventually reach Jared. Jared mentions a comment about (3) nines. Since we are collecting coins, I take that to mean we need 999 coins. After playing through to collect that value, as soon as you reach it you get an error that you cannot write 0xFE. Similarly to Vol. 2, you can extract the game ROM by using dev tools and watching for the connection. (https://gamegosling.com/vol3-7bNwQKGBFNGQT1/rom/game.gb)
+
+
+
+Trying to decipher this 0xFE overflow led me down a path for many hours that was incorrect...I eventually regrouped and decided to collect coins to the amounts of 009, 090, 099, and 900. Everytime I reached the goal number, I would go back to the beginning and save. I would then quit the emulator, rename the file to something meaningful around the number of coins and restart the game to collect my next value. 
+
+
+
+After a couple more hours of trial and error, I finally figured out the mystery. FE = 9 in the ROM, instead of 09. We are looking for differences in the files that need to be replaced with FE. The file comparison that assisted was looking at 900 coins versus 099 coins.
+
+Byte 0000002C, controls the hundreds place and needed to be changed to FE. 
+
+Byte 00000046, controls the tenths place and needs to be set to FE
+
+Byte 00000028, controls the ones place and needs to be FE
+
+
+
+Once you update the ROM, rename the file to what your emulator saved it as originally. For me that was game.sav. When you launch the game in the emulator, choose continue and speak to T-Wiz asking him to restore you game. You should get 999 coins! 
+
+
+
+Now, you need to make it through the various stages without getting anymore coins or you reset back to 000 coins. Your emulator should have a save state feature that is very useful. Everytime I made it to a new level I would save state, in case I got a coin or ran into one of the "moles?" I could simply load state and lose no progress. Once you get to the final long jump, again save state to save time. You can hop up on the small block and jump as far over as possible, it should land you on another platform which you must immediately jump two more times to the right to land safely. 
+
+
+
+Enter the room and speak to the individual in the middle. He will give you a passphrase to tell ChatNPT. 
+
+![](/docs/assets/images/gcv31.png)
+
+After you talk to ChatNPT, it will set a variable of ROCKCANMOVE to TRUE. 
+
+![](/docs/assets/images/gcv32.png)
+
+Go down and move the rock to get your flag
+
+![](/docs/assets/images/gcv33.png)
+
+Enter this in your badge for GLORY!
+
+```
+!tom+elf!
+```
+
+
 
 ---
 
