@@ -1934,15 +1934,9 @@ For this objective I used:
 
 - Ghidra to view the functions (not needed)
 
-
-
 When we play the game through normally, we can collect coins and eventually reach Jared. Jared mentions a comment about (3) nines. Since we are collecting coins, I take that to mean we need 999 coins. After playing through to collect that value, as soon as you reach it you get an error that you cannot write 0xFE. Similarly to Vol. 2, you can extract the game ROM by using dev tools and watching for the connection. (https://gamegosling.com/vol3-7bNwQKGBFNGQT1/rom/game.gb)
 
-
-
 Trying to decipher this 0xFE overflow led me down a path for many hours that was incorrect...I eventually regrouped and decided to collect coins to the amounts of 009, 090, 099, and 900. Everytime I reached the goal number, I would go back to the beginning and save. I would then quit the emulator, rename the file to something meaningful around the number of coins and restart the game to collect my next value. 
-
-
 
 After a couple more hours of trial and error, I finally figured out the mystery. FE = 9 in the ROM, instead of 09. We are looking for differences in the files that need to be replaced with FE. The file comparison that assisted was looking at 900 coins versus 099 coins.
 
@@ -1952,15 +1946,9 @@ Byte 00000046, controls the tenths place and needs to be set to FE
 
 Byte 00000028, controls the ones place and needs to be FE
 
-
-
 Once you update the ROM, rename the file to what your emulator saved it as originally. For me that was game.sav. When you launch the game in the emulator, choose continue and speak to T-Wiz asking him to restore you game. You should get 999 coins! 
 
-
-
 Now, you need to make it through the various stages without getting anymore coins or you reset back to 000 coins. Your emulator should have a save state feature that is very useful. Everytime I made it to a new level I would save state, in case I got a coin or ran into one of the "moles?" I could simply load state and lose no progress. Once you get to the final long jump, again save state to save time. You can hop up on the small block and jump as far over as possible, it should land you on another platform which you must immediately jump two more times to the right to land safely. 
-
-
 
 Enter the room and speak to the individual in the middle. He will give you a passphrase to tell ChatNPT. 
 
@@ -2017,7 +2005,7 @@ function castAndReel() {
     const reelitinButton = document.querySelector('.reelitin.gotone');
     if (reelitinButton) {
       sendMessage('reel');
-      
+
       // After 'reel', pause for 1 second and then cast again
       setTimeout(function() {
         sendMessage('cast');
@@ -2031,7 +2019,6 @@ function castAndReel() {
 
 // Start the entire script as an infinite loop
 castAndReel();
-
 ```
 
 I let this script run overnight and noticed I was still short 4 fish. After some digging on the heat maps, there's one fish that seems to have a very specific spot it can be caught in. The **Piscis Cyberneticus Skodo**, seems to be hyper located in one spot. After searching through the sea sourcecode some more it revealed.
@@ -2047,7 +2034,6 @@ After inverting the minimap colors, ensuring the same size images, and overlayin
 ![](/docs/assets/images/Cyberheat.png)
 
 We now know we need to fish right under the head of the goose on Steampunk island to find this prestigious fish! 
-
 
 After restarting the script once I got there, I was able to catch my remaining 4 fish in a matter of an hour. 
 
@@ -2736,11 +2722,7 @@ Success!
 
 ![](/docs/assets/images/comms2.png)
 
-
-
 Alright, to transmit a different message it looks like we need a frequency, go-date, and go-time. We do have the frequency from earlier...10426, we just need to determine the others to achieve GLORY!
-
-
 
 Let's focus on "Message 2: Audio-Text Decoder" for now. Let's see if we can decode these numbers. 
 
@@ -2763,8 +2745,6 @@ Go-date: 1224
 Go-time: 1200
 
 Click the trasnmit in the bottom left
-
-
 
 GLORY:
 
