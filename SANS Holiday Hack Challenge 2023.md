@@ -1987,6 +1987,8 @@ We receive what appears to be heat maps of where the fish are located on the isl
 After a bit of digging in the developer tools and reviewing the calls for cast and reel, I was able to come up with the following script that will continually fish. As soon as a fish is on the line it will reel in and re-cast. 
 
 ```javascript
+// authored by CmdNControl: https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023
+// create infinite loop to send message
 function sendMessage(message) {
   if (true === true) {
      {
