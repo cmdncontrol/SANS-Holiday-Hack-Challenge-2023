@@ -595,10 +595,8 @@ result="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlQxU3QtZExUdnlXUmd4Ql82NzZ1
 Web Apps - Get Source Control ([Web Apps - Get Source Control - REST API (Azure App Service) | Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/appservice/web-apps/get-source-control?view=rest-appservice-2022-03-01))
 
 ```bash
-curl -X GET   "https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web?api-version=2022-03-01" -H "Authorization: Bearer $result"Output reformatted to JSON
+curl -X GET   "https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web?api-version=2022-03-01" -H "Authorization: Bearer $result"tted to JSON
 ```
-
-Output reformatted to JSON
 
 ```bash
 {
@@ -667,9 +665,7 @@ Create keys for the admin principal
 After looking at Github code, it appears if you specify the principal it will use that principal value, otherwise it defaults to the OS environment variable DEFAULT_PRINCIPAL which must be elf. Create certificate for admin via CURL and specify the principal 
 
 ```bash
- curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"ssh_pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0+n6OAfimJ6D0CL3Oa7D3J+qJhYtz2RgBnE6pqNgsa/SmrDGnRYzu47LKCS2gCS+Do4ND8wK49GmSoxq4M+YRRDIqtVqSql7xEXbol7vSN8bTM2bAOMrjhz9RU4i9QzrwxafRoLMfDShbhyBaUjeT+GKmnI4072VNdqHGVbimUXCj+chMMrP+nA3doAalajyrG8YQfv76PqruwEBXxE8n0GJoWFnP3QQBzHQGMInaE4d8x+IJG/8f4S5XTnQY0giBm9aAQ1CJcXWbwuEKS4HJH/GPEQu6WB0xSegUejJujoYnSIN6/kBqHdEi0wRpVmrN67T6DwrPAxT6jgNTPOP4U2c61QapkRpGXLR1usr8WF1UZ8gAjGJgGsyYQ3nb3fqmh8ARLQZE9DNyZXEjUSKhOf3SOzDlOEzKdMkzvXSzL/Cj2Qsj7CCEuRpf7dRQXJ3k0GJdvd7OGDjs6bOfdK4ewevaCQpj3WgV633jI7xFEOALuF+FZrb1vwwyyHi6IF0= admin@ssh-server-vm.santaworkshopgeeseislands.org", "principal": "admin"}' \  
+curl -X POST  https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl  -H "Content-Type: application/json"  -d '{"ssh_pub_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0+n6OAfimJ6D0CL3Oa7D3J+qJhYtz2RgBnE6pqNgsa/SmrDGnRYzu47LKCS2gCS+Do4ND8wK49GmSoxq4M+YRRDIqtVqSql7xEXbol7vSN8bTM2bAOMrjhz9RU4i9QzrwxafRoLMfDShbhyBaUjeT+GKmnI4072VNdqHGVbimUXCj+chMMrP+nA3doAalajyrG8YQfv76PqruwEBXxE8n0GJoWFnP3QQBzHQGMInaE4d8x+IJG/8f4S5XTnQY0giBm9aAQ1CJcXWbwuEKS4HJH/GPEQu6WB0xSegUejJujoYnSIN6/kBqHdEi0wRpVmrN67T6DwrPAxT6jgNTPOP4U2c61QapkRpGXLR1usr8WF1UZ8gAjGJgGsyYQ3nb3fqmh8ARLQZE9DNyZXEjUSKhOf3SOzDlOEzKdMkzvXSzL/Cj2Qsj7CCEuRpf7dRQXJ3k0GJdvd7OGDjs6bOfdK4ewevaCQpj3WgV633jI7xFEOALuF+FZrb1vwwyyHi6IF0= admin@ssh-server-vm.santaworkshopgeeseislands.org", "principal": "admin"}'
 ```
 
 Create a public cert file to hold the value, in my case admin.pub
