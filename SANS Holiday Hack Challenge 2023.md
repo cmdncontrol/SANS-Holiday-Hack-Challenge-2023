@@ -2241,7 +2241,7 @@ After fetching information on this URI, I connected to this provider as well. In
 
 I went back to the YouTube video and remembered that not everything in encrypted...
 
-I launched Wireshark and began to listen on the wg0 interface. I submitted another action for a "Base64SnapImage" and waited... over 4000 packets were generated. When following the TCP stream I could clearly see the Base64 image start, it took Wireshark a bit to display all the data. I saved this data off to a text file called image.txt. I opened this is LibreOffice and edited the contents to solely contain the base64 text and saved it as encodedimage.txt. I leveraged Cyberchef and uploaded the file before used the "Decode Base64" function, I saved the output as "download.jpg" and I had the image!! 
+I launched Wireshark and began to listen on the wg0 interface. I submitted another action for a "Base64SnapImage" and waited... over 4000 packets were generated. When following the TCP stream I could clearly see the Base64 image start, it took Wireshark a bit to display all the data. I saved this data off to a text file called image.txt. I opened this is LibreOffice and edited the contents to solely contain the base64 text and saved it as encodedimage.txt. I leveraged Cyberchef and uploaded the file before using the "Decode Base64" function, I saved the output as "download.jpg" and I had the image!! 
 
 ![](/docs/assets/images/camera.png)
 
@@ -2252,57 +2252,6 @@ Plug the below into your badge for GLORY!
 ```
 CONQUER HOLIDAY SEASON!
 ```
-
----
-
-## Objective: Diversion
-
-```bash
-# update app repositories
-sudo apt-get update
-# ensure wireguard is working
-sudo apt-get install inetutils-ping 
-```
-
-```
-Connection connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/missile_targeting_system", "targeter", "cu3xmzp9tzpi00bdqvxq");
-```
-
-Well let's install mysql since it looks like we have some creds for a mariadb
-
-```bash
-# install mysql client
-apt install mysql-client
-y
-```
-
-Let's connect and poke around the database
-
-```bash
-mysql -h 10.1.1.1 -u targeter -p
-Enter password: cu3xmzp9tzpi00bdqvxq
-
-
-show databases;
-use missile_targeting_system;
-show tables;
-select * from messaging;
-# columns: id | msg_type msg_data
-select * from pointing_mode;
-# columns: id | numerical_mode
-select * from pointing_mode_to_str;
-# columns: id | numerical_mode | str_mode | str_desc
-select * from target_coordinates
-# columns: id | lat | lng
-```
-
-```bash
-# install java common
-apt-get install java-common
-apt-get install default-jdk
-```
-
- Thanks @Gui2315 :), could not have done this without you.
 
 ---
 
