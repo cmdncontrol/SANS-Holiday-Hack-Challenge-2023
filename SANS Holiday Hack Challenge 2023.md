@@ -220,7 +220,7 @@ kill 12771
 
 ## Objective: Reportinator
 
-I decided to take the easy way out and brute force this one. To brute force this, I utilized BurpSuite's proxy module to help capture a submission attempt. This helped me realize that for each of the 9 findings, they were simply included in the HTTP POST as input1 through input9. A valid finding was set to and a hallucination was set to 1.  
+I decided to take the easy way out and brute force this one. To brute force this, I utilized BurpSuite's proxy module to help capture a submission attempt. This helped me realize that for each of the 9 findings, they were simply included in the HTTP POST as input1 through input9. A valid finding was set to 0 and a hallucination was set to 1.  
 
 I then utilized my good friend, ChatGPT, to quickly script up a bash script to automate brute forcing against the application. After a lot of debugging and trial and error, the below script ultimately worked. 
 
