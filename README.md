@@ -1,1 +1,1 @@
-View my complete SANS Holiday Hack Challenge 2023 write up: https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023/blob/7b69304b3616267b7ce0814c670c561c925e6d88/SANS%20Holiday%20Hack%20Challenge%202023.md 
+View my complete SANS Holiday Hack Challenge 2023 write up [here](https://github.com/cmdncontrol/SANS-Holiday-Hack-Challenge-2023/blob/main/SANS%20Holiday%20Hack%20Challenge%202023.md) 
